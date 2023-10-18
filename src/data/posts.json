@@ -1,0 +1,74 @@
+[
+  {
+    "title": "React Virtual dom",
+    "description": "React Virtual dom is a virtual dom library for React",
+    "image": "/images/featured2.jpg",
+    "date": "Jan.01.2023",
+    "category": "React",
+    "featured": false
+  },
+  {
+    "title": "CSR | SSR | SSG | ISR",
+    "description": "4 ways of rendering process",
+    "image": "/images/featured1.jpg",
+    "date": "Nov.09.2022",
+    "category": "Concepts",
+    "featured": true
+  },
+  {
+    "title": "Javascript Mistery",
+    "description": "Back to basic",
+    "image": "/images/featured1.jpg",
+    "date": "Jan.01.2022",
+    "category": "Javascript",
+    "featured": false
+  },
+  {
+    "title": "Node.js & Express",
+    "description": "First time to Back-end",
+    "image": "/images/featured2.jpg",
+    "date": "Sep.21.2022",
+    "category": "Node.js",
+    "featured": true
+  },
+  {
+    "title": "Vim",
+    "description": "Powerhul shorcut for coding",
+    "image": "/images/featured3.jpg",
+    "date": "Jan.12.2023",
+    "category": "Tools",
+    "featured": true
+  },
+  {
+    "title": "Learning AWS",
+    "description": "What is the serverless??",
+    "image": "/images/featured4.jpg",
+    "date": "May.29.2023",
+    "category": "Serverless",
+    "featured": true
+  },
+  {
+    "title": "Softskills",
+    "description": "Necessary skill for Devs",
+    "image": "/images/featured3.jpg",
+    "date": "Oct.12.2023",
+    "category": "Tools",
+    "featured": false
+  },
+  {
+    "title": "OOP",
+    "description": "Strong coding concept",
+    "image": "/images/featured3.jpg",
+    "date": "Jan.30.2022",
+    "category": "Concepts",
+    "featured": false
+  },
+  {
+    "title": "Setter & Getter",
+    "description": "Javascript basics",
+    "image": "/images/featured3.jpg",
+    "date": "May.02.2022",
+    "category": "Javascript",
+    "featured": false
+  }
+]
