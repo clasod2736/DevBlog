@@ -6,7 +6,7 @@ type Props = { posts: Post[] };
 
 export default function FilteredPosts({ posts }: Props) {
   return (
-    <ul className="grid md:grid-cols-2 sm:grid-cols-1 gap-4 items-center h-full">
+    <ul className="grid md:grid-cols-2 sm:grid-cols-1 gap-4 items-center h-full my-8">
       {posts.map((post) => (
         <li
           key={post.category}

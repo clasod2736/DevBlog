@@ -5,7 +5,7 @@ type CategoryParams = {
   category: string;
 };
 
-export async function getAllPosts(): Promise<number> {
+export async function getTotalPostNumb(): Promise<number> {
   const posts = await getAllPost();
   const totalPosts = posts.length;
   return totalPosts;

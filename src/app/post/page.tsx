@@ -1,15 +1,24 @@
 import React from 'react';
 import FilterablePosts from '@/components/Post/FilterablePosts';
 import { getAllPost } from '@/service/posts';
-import { getCategory } from '@/service/category';
+import {
+  getCategory,
+  getTotalPostNumb,
+  getCategoryCount,
+} from '@/service/category';
 
 export default async function page() {
   const posts = await getAllPost();
   const categories = await getCategory();
+  const totalPostNumb = await getTotalPostNumb();
 
   return (
     <section className="h-auto">
-      <FilterablePosts posts={posts} categories={categories} />
+      <FilterablePosts
+        posts={posts}
+        categories={categories}
+        totalPostNumb={totalPostNumb}
+      />
     </section>
   );
 }
