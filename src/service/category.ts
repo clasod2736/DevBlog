@@ -1,11 +1,9 @@
 import { getAllPost } from './posts';
+import { Post } from './posts';
 
-export type Categories = [
-  {
-    name: string;
-    count: number;
-  }
-];
+type CategoryParams = {
+  category: string;
+};
 
 export async function getAllPosts(): Promise<number> {
   const posts = await getAllPost();
@@ -20,7 +18,21 @@ export async function getCategory(): Promise<string[]> {
   return categories;
 }
 
-// export async function getCategoryCount(): Promise<Categories[]> {
-//   const categories = await getCategory();
-//   const posts = await getAllPost();
-// }
+export async function getCategoryCount({
+  category,
+}: CategoryParams): Promise<number> {
+  const posts = await getAllPost();
+
+  async function result(posts: Post[], category: string): Promise<number> {
+    let count = 0;
+
+    for (let i = 0; i < posts.length; i++) {
+      if (posts[i].category === category) {
+        count++;
+      }
+    }
+    return count;
+  }
+
+  return result(posts, category);
+}

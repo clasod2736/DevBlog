@@ -2,8 +2,7 @@
 
 import React, { useState } from 'react';
 import { Post } from '@/service/posts';
-import PostsGrid from '../FTPosts/PostsGrid';
-import CategoryPosts from './CategoryPosts';
+import FilteredPosts from './FilteredPosts';
 
 type Props = {
   posts: Post[];
@@ -21,8 +20,8 @@ export default function FilterablePosts({ posts, categories }: Props) {
       : posts.filter((post) => post.category === selected);
 
   return (
-    <section>
-      <CategoryPosts posts={filterd} />
+    <section className="mt-10">
+      <FilteredPosts posts={filterd} />
     </section>
   );
 }

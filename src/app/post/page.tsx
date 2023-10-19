@@ -8,8 +8,8 @@ export default async function page() {
   const categories = await getCategory();
 
   return (
-    <>
+    <section className="h-auto">
       <FilterablePosts posts={posts} categories={categories} />
-    </>
+    </section>
   );
 }

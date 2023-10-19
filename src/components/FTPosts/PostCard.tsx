@@ -19,7 +19,7 @@ export default function PostCard({
           alt={title}
           width={800}
           height={250}
-          className={styles.img}
+          className={styles.featuredPostImg}
         />
         <div className="flex flex-col justify-evenly h-36 p-4 bg-stone-200">
           <time className="flex flex-row font-normal text-sm">

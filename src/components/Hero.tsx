@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function About() {
   return (
-    <section className="h-1/5 flex flex-col justify-around items-start">
+    <section className="h-auto flex flex-col justify-around items-start mt-4">
       <header className="text-6xl font-bold mb-2">Joon</header>
       <section className="text-xl font-medium">
         <p className="mb-1 underline text-stone-500">

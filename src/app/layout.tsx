@@ -20,9 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html className={figTree.className}>
-      <body className="flex flex-col w-full max-w-6xl px-6 justify-between">
+      <body className="flex flex-col h-auto w-full max-w-6xl px-6 justify-between overflow-y-auto">
         <NavBar />
-        <main className="h-full">{children}</main>
+        <main className="h-auto">{children}</main>
         <Footer />
       </body>
     </html>
