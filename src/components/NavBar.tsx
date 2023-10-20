@@ -8,7 +8,7 @@ export default function NavBar() {
       <nav className="flex flex-row justify-between items-base text-center w-2/6 h-1/3 text-xl">
         <Link href="/" className="flex flex-col justify-center h-full px-1">
           <Image
-            src="/pg.png"
+            src="/images/pg.png"
             alt="logo"
             width={40}
             height={40}
@@ -35,18 +35,13 @@ export default function NavBar() {
         </Link>
       </nav>
       <button className="flex justify-center items-center transition ease-in-out hover:bg-gray-300 rounded-md w-10 h-10">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          className="h-6 w-6 text-slate-500 drop-shadow-base"
-        >
-          <path
-            d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
-            fillRule="evenodd"
-            clipRule="evenodd"
-          ></path>
-        </svg>
+        <Image
+          src={'/svg/dark.svg'}
+          alt="darkToggle"
+          width={30}
+          height={30}
+          className="text-slate-100 drop-shadow-base"
+        />
       </button>
     </header>
   );
