@@ -2,12 +2,13 @@
 
 import React, { useState } from 'react';
 import { Post } from '@/service/posts';
-import FilteredPosts from './FilteredPosts';
+import FilteredPostGrid from './FilteredPostGrid';
 import Categories from '../Category/Categories';
+import { CategoryParams } from '../../service/category';
 
 type Props = {
   posts: Post[];
-  categories: string[];
+  categories: CategoryParams[];
   totalPostNumb: number;
 };
 
@@ -18,7 +19,7 @@ export default function FilterablePosts({
   categories,
   totalPostNumb,
 }: Props) {
-  const [selected, setSelected] = useState(ALL_POSTS);
+  const [selected, setSelected] = useState<string>(ALL_POSTS);
 
   const filterd =
     selected === ALL_POSTS
@@ -26,9 +27,14 @@ export default function FilterablePosts({
       : posts.filter((post) => post.category === selected);
 
   return (
-    <section className="mt-6">
-      <Categories categories={categories} totalPostNumb={totalPostNumb} />
-      <FilteredPosts posts={filterd} />
+    <section className="mt-4">
+      <Categories
+        categories={categories}
+        totalPostNumb={totalPostNumb}
+        onClick={setSelected}
+        selected={selected}
+      />
+      <FilteredPostGrid posts={filterd} />
     </section>
   );
 }

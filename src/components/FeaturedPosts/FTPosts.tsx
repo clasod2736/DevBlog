@@ -8,12 +8,12 @@ export default async function FTPosts() {
 
   return (
     <section className="flex flex-col justify-between h-auto mt-6 font-bold py-4">
-      <header className="text-4xl h-16">Featured Posts</header>
-      <section className="flex flex-row justify-between items-center h-full">
+      <header className="text-4xl h-16  animate-fadeIn">Featured Posts</header>
+      <section className="flex flex-row justify-between items-center h-full animate-textRendering">
         <PostsGrid posts={posts} />
       </section>
       <Link href={'/post'} className="flex flex-col justify-center h-14">
-        <p className="text-lg font-normal tracking-wide cursor-pointer text-slate-400 hover:text-slate-600 transition-all">
+        <p className="text-lg font-normal tracking-wide cursor-pointer text-slate-400 hover:text-slate-600 transition-all animate-fadeIn">
           Read all posts →
         </p>
       </Link>

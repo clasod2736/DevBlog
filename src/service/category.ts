@@ -1,8 +1,8 @@
 import { getAllPost } from './posts';
-import { Post } from './posts';
 
-type CategoryParams = {
+export type CategoryParams = {
   category: string;
+  count: number;
 };
 
 export async function getTotalPostNumb(): Promise<number> {
@@ -11,28 +11,32 @@ export async function getTotalPostNumb(): Promise<number> {
   return totalPosts;
 }
 
-export async function getCategory(): Promise<string[]> {
+export async function getCategory(): Promise<CategoryParams[]> {
   const posts = await getAllPost();
   const categories = [...new Set(posts.map((post) => post.category))];
 
-  return categories;
-}
+  function getCategoryCount() {
+    let result = categories.map((category) => {
+      return {
+        category: category,
+        count: 0,
+      };
+    });
 
-export async function getCategoryCount({
-  category,
-}: CategoryParams): Promise<number> {
-  const posts = await getAllPost();
-
-  async function result(posts: Post[], category: string): Promise<number> {
-    let count = 0;
-
-    for (let i = 0; i < posts.length; i++) {
-      if (posts[i].category === category) {
-        count++;
-      }
-    }
-    return count;
+    posts.forEach((post) => {
+      categories.forEach((category) => {
+        if (post.category === category) {
+          const categoryObj = result.find((item) => item.category === category);
+          if (categoryObj) {
+            categoryObj.count++;
+          }
+        }
+      });
+    });
+    return result;
   }
 
-  return result(posts, category);
+  const result = getCategoryCount();
+
+  return result;
 }

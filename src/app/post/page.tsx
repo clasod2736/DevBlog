@@ -1,11 +1,7 @@
 import React from 'react';
 import FilterablePosts from '@/components/Post/FilterablePosts';
 import { getAllPost } from '@/service/posts';
-import {
-  getCategory,
-  getTotalPostNumb,
-  getCategoryCount,
-} from '@/service/category';
+import { getCategory, getTotalPostNumb } from '@/service/category';
 
 export default async function page() {
   const posts = await getAllPost();

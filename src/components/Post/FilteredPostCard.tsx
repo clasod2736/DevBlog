@@ -8,21 +8,14 @@ import { MdOutlineDateRange } from 'react-icons/md';
 
 type Props = { post: Post };
 
-export default function PostCard({
+export default function FilteredPostCard({
   post: { title, description, category, image, date },
 }: Props) {
   return (
     <Link
       href={`/post/${category}/${title}`}
-      className="flex flex-col rounded-xl overflow-hidden bg-stone-200 hover:shadow-sm "
+      className="flex flex-col rounded-xl overflow-hidden"
     >
-      <Image
-        src={image}
-        alt={title}
-        width={200}
-        height={200}
-        className={styles.filteredPostImg}
-      />
       <div className="flex flex-col justify-evenly h-36 px-4 py-2">
         <time className="flex flex-row font-normal text-sm">
           <p className="flex flex-col justify-center mr-2 text-lg">
