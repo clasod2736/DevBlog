@@ -27,7 +27,7 @@ export default function FilterablePosts({
       : posts.filter((post) => post.category === selected);
 
   return (
-    <section className="mt-4">
+    <section className="mt-4 w-auto">
       <Categories
         categories={categories}
         totalPostNumb={totalPostNumb}

@@ -11,6 +11,9 @@ const config: Config = {
   },
   theme: {
     extend: {
+      colors: {
+        light: '#f9f9f9',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -35,7 +38,7 @@ const config: Config = {
         },
       },
       animation: {
-        textRendering: 'textRendering .3s ease-in-out',
+        textRendering: 'textRendering .5s ease-in-out',
         fadeIn: 'fadeIn .5s ease-in-out',
       },
     },
