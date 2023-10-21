@@ -18,14 +18,18 @@ export default function CategoryList({
         <li
           onClick={() => onClick(category.category)}
           key={index}
-          className="flex flex-row w-auto justify-between items-center p-1.5 rounded-md cursor-pointer hover:bg-slate-300"
-          style={{
-            backgroundColor:
-              category.category === selected ? 'lightgray' : 'transparent',
-          }}
+          className="flex flex-row w-auto justify-between items-center p-1.5 rounded-md cursor-pointer hover:bg-slate-300 hover:dark:bg-slate-500"
+          // style={{
+          //   backgroundColor:
+          //     category.category === selected ? 'lightgray' : 'transparent',
+          // }}
         >
-          <p className=" text-slate-700">{category.category}</p>
-          <sup className=" text-slate-700">({category.count})</sup>
+          <p className=" text-slate-700 dark:text-slate-400">
+            {category.category}
+          </p>
+          <sup className=" text-slate-700 dark:text-slate-400">
+            ({category.count})
+          </sup>
         </li>
       ))}
     </ul>

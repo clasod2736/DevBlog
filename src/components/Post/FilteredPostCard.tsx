@@ -14,7 +14,7 @@ export default function FilteredPostCard({
   return (
     <Link
       href={`/post/${category}/${title}`}
-      className="flex flex-col rounded-xl overflow-hidden"
+      className="flex flex-col rounded-xl"
     >
       <div className="flex flex-col justify-evenly h-36 px-4 py-2">
         <time className="flex flex-row font-normal text-sm">

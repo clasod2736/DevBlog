@@ -9,7 +9,7 @@ export default async function page() {
   const totalPostNumb = await getTotalPostNumb();
 
   return (
-    <section className="h-auto">
+    <section>
       <FilterablePosts
         posts={posts}
         categories={categories}

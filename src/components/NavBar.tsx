@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
+import Darkmode from '@/components/Navbar/Darkmode';
 
 export default function NavBar() {
   return (
-    <header className="flex flex-row justify-between items-center w-full h-32 text-4xl text-stone-600 mt-6">
+    <header className="flex flex-row justify-between items-center w-full h-32 text-4xl text-stone-600 dark:text-stone-200 mt-6">
       <nav className="flex flex-row justify-between items-base text-center w-2/6 h-1/3 text-xl">
         <Link href="/" className="flex flex-col justify-center h-full px-1">
           <Image
@@ -17,32 +18,24 @@ export default function NavBar() {
         </Link>
         <Link
           href="/about"
-          className="flex items-center h-full hover:bg-slate-200 px-2 rounded-md"
+          className="flex items-center h-full hover:bg-slate-200 hover:dark:bg-zinc-600 px-2 rounded-md transition-all"
         >
           About
         </Link>
         <Link
           href="/post"
-          className="flex items-center h-full hover:bg-slate-200 px-2  rounded-md"
+          className="flex items-center h-full hover:bg-slate-200 hover:dark:bg-zinc-600 px-2 rounded-md transition-all"
         >
           Post
         </Link>
         <Link
           href="/snippet"
-          className="flex items-center h-full hover:bg-slate-200 px-2 rounded-md"
+          className="flex items-center h-full hover:bg-slate-200 px-2 hover:dark:bg-zinc-600 rounded-md transition-all"
         >
           Snippet
         </Link>
       </nav>
-      <button className="flex justify-center items-center transition ease-in-out hover:bg-gray-300 rounded-md w-10 h-10">
-        <Image
-          src={'/svg/dark.svg'}
-          alt="darkToggle"
-          width={30}
-          height={30}
-          className="text-slate-100 drop-shadow-base"
-        />
-      </button>
+      <Darkmode />
     </header>
   );
 }
