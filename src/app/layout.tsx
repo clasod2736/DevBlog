@@ -21,7 +21,7 @@ export default async function RootLayout({
   return (
     <html suppressHydrationWarning>
       <body className="flex flex-row w-full justify-center items-start overflow-y-auto dark:bg-zinc-900">
-        <main className="flex flex-col justify-center items-center h-auto w-full max-w-6xl">
+        <main className="flex flex-col justify-start items-center h-full w-full max-w-6xl">
           <ThemeProvider>
             <NavBar />
             <section className="w-full">{children}</section>

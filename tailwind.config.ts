@@ -41,6 +41,9 @@ const config: Config = {
         textRendering: 'textRendering .5s ease-in-out',
         fadeIn: 'fadeIn .5s ease-in-out',
       },
+      minHeight: {
+        FilteredPostSection: '804px',
+      },
     },
   },
   plugins: [],
