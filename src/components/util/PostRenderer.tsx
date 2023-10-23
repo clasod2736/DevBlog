@@ -7,7 +7,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 
 export default function PostRenderer(post: Post) {
   const MdxContent = useMDXComponent(post.body.code);
-  console.log(post.body.code);
+  // console.log(post.body.code);
 
   return (
     // <div className="mb-8 prose dark:prose-dark">
@@ -28,7 +28,6 @@ export default function PostRenderer(post: Post) {
     //   />
     // </div>
     <div className="prose prose-lg dark:prose-dark animate-fadeIn">
-      <h1>{}</h1>
       <MdxContent></MdxContent>
     </div>
   );

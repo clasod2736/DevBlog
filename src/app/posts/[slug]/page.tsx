@@ -18,6 +18,8 @@ export default async function page({ params: { slug } }: Props) {
     <PostRenderer key={idx} {...post} />
   ));
 
+  console.log(generatedPosts[1]);
+
   return <article className="h-auto mt-8">{generatedPosts[1]}</article>;
 }
 
