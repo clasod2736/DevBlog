@@ -13,7 +13,7 @@ export default function FilteredPostCard({
 }: Props) {
   return (
     <Link
-      href={`/post/${title}`}
+      href={`/posts/${title}`}
       className="flex flex-col rounded-xl animate-fadeIn"
     >
       <div className="flex flex-col justify-evenly h-36 px-4 py-2">

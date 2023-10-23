@@ -9,10 +9,10 @@ import { MdOutlineDateRange } from 'react-icons/md';
 type Props = { post: Post };
 
 export default function PostCard({
-  post: { title, description, category, image, date },
+  post: { title, description, image, date },
 }: Props) {
   return (
-    <Link href={`/post/${title}`}>
+    <Link href={`/posts/${title}`}>
       <article className="flex flex-col rounded-xl overflow-hidden">
         <Image
           src={image}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Post } from '../../service/posts';
-import PostCard from './PostCard';
+import PostCard from './FeaturedPostCard';
 
 type Props = { posts: Post[] };
 

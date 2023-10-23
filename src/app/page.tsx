@@ -1,6 +1,6 @@
 import React from 'react';
 import About from '../components/Hero';
-import FTPosts from '../components/FeaturedPosts/FTPosts';
+import FTPosts from '../components/FeaturedPosts/FeaturedPosts';
 
 export default function Home() {
   return (

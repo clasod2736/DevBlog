@@ -1,6 +1,6 @@
-import { metadata } from './../app/layout';
 import path from 'path';
 import { readFile } from 'fs/promises';
+import { allPosts, type Post } from 'contentlayer/generated';
 
 //type alias for below function
 export type Post = {
@@ -23,19 +23,19 @@ export async function getAllPost(): Promise<Post[]> {
 }
 
 export async function getPostTitles(): Promise<string[]> {
-  return getAllPost().then((posts) => posts.map((post) => post.title));
+  const posts = allPosts;
+  return posts.map((post) => post.title);
 }
 
 export async function getFeaturedPosts(): Promise<Post[]> {
-  return getAllPost()
-    .then((posts) => posts.filter((post) => post.featured))
-    .then((posts) => posts.splice(0, 4));
+  const posts = allPosts;
+  return posts.filter((post) => post.featured);
 }
 
 export async function getPostData(fileName: string): Promise<PostData> {
   const filePath = path.join(
     process.cwd(),
-    'src',
+    '.contentLayer',
     'markdown',
     `${fileName}.md`
   );

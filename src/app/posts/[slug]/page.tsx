@@ -1,6 +1,7 @@
 import React from 'react';
-import MarkdownViewer from '@/components/util/MarkdownViewer';
+import PostRenderer from '@/components/util/PostRenderer';
 import { getPostData, getPostTitles } from '@/service/posts';
+import { allPosts } from 'contentlayer/generated';
 
 type Props = {
   params: {
@@ -9,13 +10,15 @@ type Props = {
 };
 
 export default async function page({ params: { slug } }: Props) {
-  const post = await getPostData(slug);
+  const posts = allPosts;
 
-  return (
-    <article className="h-auto mt-8">
-      <MarkdownViewer content={post.content} />
-    </article>
-  );
+  // console.log(posts);
+
+  const generatedPosts = posts.map((post, idx) => (
+    <PostRenderer key={idx} {...post} />
+  ));
+
+  return <article className="h-auto mt-8">{generatedPosts[1]}</article>;
 }
 
 export async function generateStaticParams() {
