@@ -9,11 +9,11 @@ import { MdOutlineDateRange } from 'react-icons/md';
 type Props = { post: Post };
 
 export default function FilteredPostCard({
-  post: { title, description, category, date },
+  post: { title, description, date },
 }: Props) {
   return (
     <Link
-      href={`/post/${category}/${title}`}
+      href={`/post/${title}`}
       className="flex flex-col rounded-xl animate-fadeIn"
     >
       <div className="flex flex-col justify-evenly h-36 px-4 py-2">

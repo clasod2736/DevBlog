@@ -43,10 +43,11 @@ const config: Config = {
       },
       minHeight: {
         FilteredPostSection: '804px',
+        NavBar: '8rem',
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
   darkMode: 'class',
 };
 export default config;

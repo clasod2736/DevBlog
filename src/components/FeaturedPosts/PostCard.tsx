@@ -12,7 +12,7 @@ export default function PostCard({
   post: { title, description, category, image, date },
 }: Props) {
   return (
-    <Link href={`/post/${category}`}>
+    <Link href={`/post/${title}`}>
       <article className="flex flex-col rounded-xl overflow-hidden">
         <Image
           src={image}

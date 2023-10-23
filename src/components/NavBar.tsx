@@ -5,7 +5,7 @@ import Darkmode from '@/components/Navbar/Darkmode';
 
 export default function NavBar() {
   return (
-    <header className="flex flex-row justify-between items-center w-full h-32 text-4xl text-stone-600 dark:text-stone-200 mt-6">
+    <header className="flex flex-row justify-between items-center w-full h-32 min-h-[8rem] text-4xl text-stone-600 dark:text-stone-200 mt-6">
       <nav className="flex flex-row justify-between items-base text-center w-2/6 h-1/3 text-xl">
         <Link href="/" className="flex flex-col justify-center h-full px-1">
           <Image

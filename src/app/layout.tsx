@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Figtree } from 'next/font/google';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-import ThemeProvider from './ThemeProvider';
+import ThemeProvider from '../provider/ThemeProvider';
 
 //google font
 const figTree = Figtree({ subsets: ['latin'] });
@@ -19,9 +19,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning>
+    <html suppressHydrationWarning className={figTree.className}>
       <body className="flex flex-row w-full justify-center items-start overflow-y-auto dark:bg-zinc-900">
-        <main className="flex flex-col justify-start items-center h-full w-full max-w-6xl">
+        <main className="flex flex-col justify-start items-center h-full w-full max-w-6xl px-6">
           <ThemeProvider>
             <NavBar />
             <section className="w-full">{children}</section>
