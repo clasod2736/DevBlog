@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Post } from '@/service/posts';
+import { type Post } from 'contentlayer/generated';
 import FilteredPostGrid from './FilteredPostGrid';
 import Categories from '../Category/Categories';
 import { CategoryParams } from '../../service/category';

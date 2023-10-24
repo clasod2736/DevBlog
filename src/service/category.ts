@@ -1,4 +1,4 @@
-import { getAllPost } from './posts';
+import { allPosts } from 'contentlayer/generated';
 
 export type CategoryParams = {
   category: string;
@@ -6,13 +6,14 @@ export type CategoryParams = {
 };
 
 export async function getTotalPostNumb(): Promise<number> {
-  const posts = await getAllPost();
+  const posts = allPosts;
   const totalPosts = posts.length;
   return totalPosts;
 }
 
+//get Frequency for all categories
 export async function getCategory(): Promise<CategoryParams[]> {
-  const posts = await getAllPost();
+  const posts = allPosts;
   const categories = [...new Set(posts.map((post) => post.category))];
 
   function getCategoryCount() {

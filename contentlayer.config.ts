@@ -8,6 +8,7 @@ export const Post = defineDocumentType(() => ({
   name: 'Post',
   filePathPattern: `**/*.mdx`,
   contentType: 'mdx',
+  schemaType: 'object',
   fields: {
     title: { type: 'string', required: true },
     category: { type: 'string', required: true },
@@ -23,11 +24,18 @@ export const Post = defineDocumentType(() => ({
   },
 }));
 
+/** @type {import('rehype-pretty-code').Options} */
+const options = {
+  theme: 'one-dark-pro',
+  keepBackground: false,
+  showLineNumbers: true,
+};
+
 export default makeSource({
   contentDirPath: 'posts',
   documentTypes: [Post],
   mdx: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [[rehypePrettyCode]],
+    rehypePlugins: [[rehypePrettyCode, options]],
   },
 });

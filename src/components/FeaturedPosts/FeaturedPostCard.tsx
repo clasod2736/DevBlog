@@ -32,7 +32,7 @@ export default function PostCard({
             {realDate}
           </time>
           <h3 className="text-xl">{title}</h3>
-          <p className="w-full truncate italic">{''}</p>
+          <p className="w-full truncate italic">{category}</p>
         </div>
       </article>
     </Link>

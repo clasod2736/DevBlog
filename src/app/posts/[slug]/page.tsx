@@ -1,7 +1,7 @@
 import React from 'react';
 import PostRenderer from '@/components/util/PostRenderer';
-import { getPostData, getPostTitles } from '@/service/posts';
 import { allPosts } from 'contentlayer/generated';
+import { notFound } from 'next/navigation';
 
 type Props = {
   params: {
@@ -9,24 +9,28 @@ type Props = {
   };
 };
 
-export default async function page({ params: { slug } }: Props) {
-  const posts = allPosts;
-
-  // console.log(posts);
-
-  const generatedPosts = posts.map((post, idx) => (
-    <PostRenderer key={idx} {...post} />
-  ));
-
-  console.log(generatedPosts[1]);
-
-  return <article className="h-auto mt-8">{generatedPosts[1]}</article>;
+export async function generateStaticParams() {
+  return allPosts.map((post) => ({
+    slug: post._raw.flattenedPath,
+  }));
 }
 
-export async function generateStaticParams() {
-  const postTitle = await getPostTitles();
+export default async function page({ params: { slug } }: Props) {
+  const posts = allPosts;
+  const decodedSlug = decodeURIComponent(slug);
 
-  return postTitle.map((post) => ({
-    slug: post,
-  }));
+  const compiledPosts = posts.map((post, idx) => (
+    <PostRenderer key={idx} {...post} />
+  ));
+  const filteredPosts = compiledPosts.filter((post) => {
+    return post.props._raw.flattenedPath === decodedSlug;
+  });
+
+  return (
+    <article className="h-auto mt-8">
+      {filteredPosts.length > 0
+        ? filteredPosts.map((post, idx) => post)
+        : notFound()}
+    </article>
+  );
 }
