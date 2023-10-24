@@ -1,12 +1,12 @@
 import React from 'react';
-import FilterablePosts from '@/components/Post/FilterablePosts';
-import Header from '@/components/Post/Header';
+import FilterablePosts from '@/components/FilteredPosts/FilterablePosts';
+import Header from '@/components/FilteredPosts/Header';
 
-import { getAllPost } from '@/service/posts';
+import { allPosts } from 'contentlayer/generated';
 import { getCategory, getTotalPostNumb } from '@/service/category';
 
 export default async function page() {
-  const posts = await getAllPost();
+  const posts = allPosts;
   const categories = await getCategory();
   const totalPostNumb = await getTotalPostNumb();
 

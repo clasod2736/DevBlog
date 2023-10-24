@@ -1,18 +1,21 @@
 import React from 'react';
-import { Post } from '../../service/posts';
+import { PostData } from '../../service/posts';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../../CSS/PostCard.module.css';
+import { format, parseISO } from 'date-fns';
 
 import { MdOutlineDateRange } from 'react-icons/md';
 
-type Props = { post: Post };
+type Props = { post: PostData };
 
 export default function PostCard({
-  post: { title, description, category, image, date },
+  post: { title, category, date, image },
 }: Props) {
+  const realDate = format(parseISO(date), 'LLLL d, yyyy');
+
   return (
-    <Link href={`/post/${title}`}>
+    <Link href={`/posts/${title}`}>
       <article className="flex flex-col rounded-xl overflow-hidden">
         <Image
           src={image}
@@ -26,10 +29,10 @@ export default function PostCard({
             <p className="flex flex-col justify-center mr-2 text-lg">
               <MdOutlineDateRange />
             </p>
-            {date}
+            {realDate}
           </time>
           <h3 className="text-xl">{title}</h3>
-          <p className="w-full truncate italic">{description}</p>
+          <p className="w-full truncate italic">{category}</p>
         </div>
       </article>
     </Link>

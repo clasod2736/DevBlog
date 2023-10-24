@@ -26,7 +26,7 @@ export default function Categories({
         <p className="text-3xl hover:underline underline-offset-4 decoration-2 italic">
           All Posts
         </p>
-        <sup className="text-lg">({totalPostNumb})</sup>
+        <sup className="text-lg"> ({totalPostNumb})</sup>
       </button>
       <CategoryList
         categories={categories}

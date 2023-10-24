@@ -23,7 +23,7 @@ export default function NavBar() {
           About
         </Link>
         <Link
-          href="/post"
+          href="/posts"
           className="flex items-center h-full hover:bg-slate-200 hover:dark:bg-zinc-600 px-2 rounded-md transition-all"
         >
           Post
