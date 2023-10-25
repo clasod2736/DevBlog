@@ -29,6 +29,7 @@
     "rehype-highlight": "^7.0.0",
     "rehype-pretty-code": "^0.10.1",
     "remark-gfm": "^4.0.0",
+    "tailwindcss-animation-delay": "^1.0.7",
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {

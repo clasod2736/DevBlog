@@ -29,7 +29,7 @@ export default async function page({ params: { slug } }: Props) {
   return (
     <section className="h-auto mt-8 prose prose-stone prose-lg dark:prose-dark animate-fadeIn">
       {filteredPosts.length > 0
-        ? filteredPosts.map((post, idx) => post)
+        ? filteredPosts.map((post) => post)
         : notFound()}
     </section>
   );

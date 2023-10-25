@@ -32,7 +32,7 @@ const config: Config = {
         xs: '320px',
       },
       keyframes: {
-        textRendering: {
+        slideToUp: {
           '0%': { transform: 'translateY(5%)', opacity: '0' },
           '100%': { transform: 'translateY(0%)', opacity: '1' },
         },
@@ -40,10 +40,20 @@ const config: Config = {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
+        slideToRight: {
+          '0%': { transform: 'translateX(-10%)', opacity: '0' },
+          '100%': { transform: 'translateX(0%)', opacity: '1' },
+        },
+        slideToUpSlow: {
+          '0%': { transform: 'translateY(15%)', opacity: '0' },
+          '100%': { transform: 'translateY(0%)', opacity: '1' },
+        },
       },
       animation: {
-        textRendering: 'textRendering .5s ease-in-out',
-        fadeIn: 'fadeIn .5s ease-in-out',
+        slideToUp: 'slideToUp .3s ease-in-out',
+        fadeIn: 'fadeIn .3s ease-in-out',
+        slideToRight: 'slideToRight .6s ease-in-out',
+        slideToUpSlow: 'slideToUpSlow .6s ease-in-out',
       },
       minHeight: {
         FilteredPostSection: '804px',
@@ -82,7 +92,11 @@ const config: Config = {
       }),
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('tailwindcss-animation-delay'),
+  ],
+
   darkMode: 'class',
 };
 export default config;

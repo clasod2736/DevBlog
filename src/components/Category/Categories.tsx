@@ -16,7 +16,7 @@ export default function Categories({
   selected,
 }: CategoryProps) {
   return (
-    <section className="flex flex-row h-auto justify-start items-center overflow-x-auto mb-2">
+    <section className="flex flex-row h-auto justify-start items-center overflow-x-auto overflow-y-hidden mb-2">
       <button
         className="flex flex-row items-center w-auto min-w-fit mx-3 "
         onClick={() => {
