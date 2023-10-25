@@ -41,6 +41,11 @@ export async function getPostData(): Promise<PostData[]> {
   });
 }
 
+export function sortAllPost(): Post[] {
+  const posts = allPosts;
+  return posts.sort((a, b) => (a.date > b.date ? -1 : 1));
+}
+
 export async function getPostTitles(): Promise<string[]> {
   const posts = allPosts;
   return posts.map((post) => post.title);

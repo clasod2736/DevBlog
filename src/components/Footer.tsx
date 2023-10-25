@@ -5,7 +5,7 @@ import { MdEmail } from 'react-icons/md';
 
 export default function Footer() {
   return (
-    <section className="flex flex-col w-full h-20 justify-end animate-fadeIn border-t-2 border-zinc-300 mt-8 gap-1">
+    <section className="flex flex-col w-full h-20 justify-end animate-fadeIn border-t-2 border-zinc-300 my-8 gap-1">
       <div className="flex flex-row justify-end text-2xl gap-3">
         <a href="mailto:clasod2736@gmail.com">
           <MdEmail className="cursor-pointer hover:scale-110 transition-all" />

@@ -12,8 +12,8 @@ export default async function FTPosts() {
       <section className="flex flex-row justify-between items-center h-full animate-slideToUpSlow">
         <PostsGrid posts={posts} />
       </section>
-      <Link href={'/posts'} className="flex flex-col justify-center h-14">
-        <p className="text-xl font-normal tracking-wide cursor-pointer text-stone-500 hover:text-stone-700 transition-all animate-[fadeIn_0.8s_ease-in-out]">
+      <Link href={'/posts'} className="flex flex-col justify-end h-14">
+        <p className="text-xl font-normal tracking-wide cursor-pointer text-stone-500 hover:text-stone-700 dark:hover:text-stone-300 transition-all animate-[fadeIn_0.8s_ease-in-out]">
           Read all posts →
         </p>
       </Link>
