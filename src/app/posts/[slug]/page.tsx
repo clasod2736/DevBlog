@@ -1,5 +1,5 @@
 import React from 'react';
-import PostRenderer from '@/components/util/PostRenderer';
+import PostRenderer from '@/components/Post/PostRenderer';
 import { allPosts } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
 
@@ -27,10 +27,10 @@ export default async function page({ params: { slug } }: Props) {
   });
 
   return (
-    <article className="h-auto mt-8">
+    <section className="h-auto mt-8 prose prose-stone prose-lg dark:prose-dark animate-fadeIn">
       {filteredPosts.length > 0
         ? filteredPosts.map((post, idx) => post)
         : notFound()}
-    </article>
+    </section>
   );
 }
