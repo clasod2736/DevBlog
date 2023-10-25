@@ -27,8 +27,6 @@ export const Post = defineDocumentType(() => ({
 /** @type {import('rehype-pretty-code').Options} */
 const options = {
   theme: 'one-dark-pro',
-  keepBackground: false,
-  showLineNumbers: true,
 };
 
 export default makeSource({
