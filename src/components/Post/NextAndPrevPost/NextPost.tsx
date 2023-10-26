@@ -9,7 +9,7 @@ type Props = {
 export default function NextPost(next: Props) {
   if (next.next === null) {
     return (
-      <p className="text-xl font-semibold underline underline-offset-2">
+      <p className="text-xl font-semibold underline underline-offset-2 animate-pulse">
         This is the Oldest Post.
       </p>
     );

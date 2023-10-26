@@ -35,7 +35,7 @@ export default function Darkmode() {
         alt="darkToggle"
         width={30}
         height={30}
-        className="text-slate-100 drop-shadow-base"
+        className="text-slate-100 drop-shadow-base min-w-fit"
       />
     </button>
   );

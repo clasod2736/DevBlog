@@ -4,6 +4,7 @@ import { Source_Sans_3 } from 'next/font/google';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import ThemeProvider from '../provider/ThemeProvider';
+import NextTopLoader from 'nextjs-toploader';
 
 //google font
 const figTree = Source_Sans_3({ subsets: ['latin'] });
@@ -24,7 +25,11 @@ export default async function RootLayout({
         <main className="flex flex-col justify-start items-center h-auto w-full max-w-6xl px-6">
           <ThemeProvider>
             <NavBar />
-            <section className="w-full">{children}</section>
+            <section className="w-full">
+              <NextTopLoader color="#E4A50B" />
+
+              {children}
+            </section>
             <Footer />
           </ThemeProvider>
         </main>

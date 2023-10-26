@@ -18,7 +18,7 @@ export default async function PostCard({ post }: Props) {
 
   return (
     <Link href={`/posts/${post.title}`}>
-      <article className="flex flex-col rounded-xl overflow-hidden">
+      <article className="flex flex-col w-full rounded-xl overflow-hidden">
         <Image
           src={post.image}
           alt={post.title}
