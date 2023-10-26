@@ -52,8 +52,8 @@ const config: Config = {
       animation: {
         slideToUp: 'slideToUp .3s ease-in-out',
         fadeIn: 'fadeIn .5s ease-in-out',
-        slideToRight: 'slideToRight .6s ease-in-out',
-        slideToUpSlow: 'slideToUpSlow .6s ease-in-out',
+        slideToRight: 'slideToRight .5s ease-in-out',
+        slideToUpSlow: 'slideToUpSlow .5s ease-in-out',
       },
       minHeight: {
         FilteredPostSection: '804px',

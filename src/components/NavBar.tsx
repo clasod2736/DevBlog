@@ -9,7 +9,7 @@ export default function NavBar() {
       <nav className="flex flex-row justify-between items-base text-center w-auto h-1/3 gap-6 text-xl">
         <Link
           href="/"
-          className="flex flex-col justify-center h-full px-1 min-h-full"
+          className="flex flex-col justify-center h-full xs:hidden sm:flex "
         >
           <Image
             src="/images/pg.png"

@@ -1,12 +1,15 @@
 .featuredPostImg {
-  width: 300px;
+  min-width: 200px;
+  width: 100%;
+  max-width: 600px;
   height: 260px;
   overflow: hideen;
   object-fit: cover;
 }
 
 .filteredPostImg {
-  width: 600px;
+  min-width: 600px;
+  max-width: 600px;
   height: 100px;
   overflow: hideen;
   object-fit: cover;
