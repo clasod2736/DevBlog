@@ -17,10 +17,10 @@ export default function NextPost(next: Props) {
     return (
       <Link
         href={`/posts/${next.next?.title}`}
-        className="flex flex-col justify-center text-center w-1/5 h-5/6 no-underline hover:bg-zinc-400 dark:hover:bg-zinc-800 text-xl font-semibold rounded-md"
+        className="flex flex-row justify-end items-center text-center w-auto h-5/6 p-4 no-underline hover:bg-zinc-200 dark:hover:bg-zinc-700 text-xl font-semibold rounded-md"
       >
-        <p className="my-0">Next Post</p>
-        <p className="my-0">[ {next.next?.title} ]</p>
+        <p className="my-0">Next Post: </p>
+        <p className="my-0"> [ {next.next?.title} ]</p>
       </Link>
     );
   }

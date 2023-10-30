@@ -5,5 +5,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <section>{children}</section>;
+  return (
+    <section className="flex flex-row justify-between">{children}</section>
+  );
 }

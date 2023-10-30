@@ -59,6 +59,9 @@ const config: Config = {
         FilteredPostSection: '804px',
         NavBar: '8rem',
       },
+      minWidth: {
+        OnThisPage: '240px',
+      },
       typography: ({ theme }: Theme) => ({
         dark: {
           css: {

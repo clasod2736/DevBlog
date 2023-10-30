@@ -27,7 +27,7 @@ export default async function page({ params: { slug } }: Props) {
   });
 
   return (
-    <section className="h-auto w-full max-w-6xl mt-8 prose prose-stone prose-lg dark:prose-dark animate-fadeIn">
+    <section className="h-auto w-full max-w-full mt-8 prose prose-stone prose-lg dark:prose-dark animate-fadeIn scroll-smooth">
       {filteredPosts.length > 0
         ? filteredPosts.map((post) => post)
         : notFound()}
