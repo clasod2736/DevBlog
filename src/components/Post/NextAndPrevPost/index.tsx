@@ -10,7 +10,7 @@ type Props = {
 
 export default function NextAndPrevPost({ next, prev }: Props) {
   return (
-    <section className="flex flex-row justify-between items-center w-full h-24">
+    <section className="flex flex-row justify-between items-center w-full h-16 sticky">
       <PrevPost prev={prev} />
       <NextPost next={next} />
     </section>

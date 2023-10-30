@@ -18,16 +18,16 @@ export default function CategoryList({
         <li
           onClick={() => onClick(category.category)}
           key={index}
-          className={`flex flex-row w-auto justify-between items-center p-1.5 rounded-md cursor-pointer hover:bg-slate-300 hover:dark:bg-slate-500 ${
+          className={`flex flex-row w-auto justify-between items-center p-1.5 rounded-md cursor-pointer hover:bg-zinc-200 hover:dark:bg-zinc-600 ${
             selected === category.category
               ? 'bg-zinc-300 dark:bg-zinc-700'
               : 'transparent'
           }`}
         >
-          <p className=" text-slate-700 dark:text-slate-400">
+          <p className=" text-zinc-500 dark:text-zinc-400">
             {category.category}
           </p>
-          <sup className=" text-slate-700 dark:text-slate-400">
+          <sup className=" text-zinc-500 dark:text-zinc-400">
             ({category.count})
           </sup>
         </li>

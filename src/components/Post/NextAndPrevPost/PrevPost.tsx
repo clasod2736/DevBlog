@@ -17,9 +17,9 @@ export default function PrevPost(prev: Props) {
     return (
       <Link
         href={`/posts/${prev.prev?.title}`}
-        className="flex flex-col justify-center text-center w-1/5 h-5/6 no-underline hover:bg-zinc-400 dark:hover:bg-zinc-800 text-xl font-semibold rounded-md"
+        className="flex flex-row justify-start items-center text-center w-auto h-5/6 p-4 no-underline hover:bg-zinc-200 dark:hover:bg-zinc-700 text-xl font-semibold rounded-md"
       >
-        <p className="my-0">Previous Post</p>
+        <p className="my-0">Previous Post:</p>
         <p className="my-0">[ {prev.prev?.title} ]</p>
       </Link>
     );

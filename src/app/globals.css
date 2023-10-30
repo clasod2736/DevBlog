@@ -11,8 +11,3 @@ html {
   align-items: center;
   background-color: #f9f9f9;
 }
-
-body {
-  height: 100vh;
-  overflow-y: auto;
-}

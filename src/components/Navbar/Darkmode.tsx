@@ -28,7 +28,7 @@ export default function Darkmode() {
         setTheme(theme === 'dark' ? 'light' : 'dark');
         setDarkMode(!darkMode);
       }}
-      className="flex justify-center items-center transition ease-in-out hover:bg-gray-500 rounded-md w-10 h-10"
+      className="flex justify-center items-center transition ease-in-out hover:bg-gray-500 rounded-md w-10 h-10 p-1"
     >
       <Image
         src={darkMode ? '/svg/light.svg' : '/svg/dark.svg'}
