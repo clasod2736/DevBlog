@@ -3,7 +3,7 @@ import Link from 'next/link';
 import PostsGrid from './FeaturedPostsGrid';
 import { getFeaturedPosts } from '@/service/posts';
 
-export default async function FTPosts() {
+export default async function FeaturedPosts() {
   const posts = await getFeaturedPosts();
 
   return (

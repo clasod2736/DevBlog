@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
-import Darkmode from '@/components/Navbar/Darkmode';
+import Darkmode from '@/components/Home/Navbar/Darkmode';
 
 export default function NavBar() {
   return (
@@ -12,10 +12,10 @@ export default function NavBar() {
           className="flex flex-col justify-center h-full xs:hidden sm:flex "
         >
           <Image
-            src="/images/pg.png"
+            src="/images/favicon.png"
             alt="logo"
-            width={40}
-            height={40}
+            width={50}
+            height={50}
             className="hover:transform hover:scale-110 ease-in-out transition-all"
           />
         </Link>

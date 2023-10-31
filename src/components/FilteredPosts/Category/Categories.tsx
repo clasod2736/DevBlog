@@ -1,6 +1,6 @@
 import React from 'react';
 import CategoryList from './CategoryList';
-import { CategoryParams } from '../../service/category';
+import { CategoryParams } from '../../../service/category';
 
 type CategoryProps = {
   categories: CategoryParams[];

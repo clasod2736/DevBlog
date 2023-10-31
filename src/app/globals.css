@@ -3,11 +3,7 @@
 @tailwind utilities;
 
 html {
-  display: flex;
-  height: 100%;
+  height: auto;
   overflow-y: auto;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   background-color: #f9f9f9;
 }

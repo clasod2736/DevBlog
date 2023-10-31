@@ -3,7 +3,7 @@ import { getReadingTime } from '@/util/getReadingTime';
 import { type Post } from 'contentlayer/generated';
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from '../../CSS/PostCard.module.css';
+import styles from '@/CSS/PostCard.module.css';
 import { format, parseISO } from 'date-fns';
 
 import { MdOutlineDateRange } from 'react-icons/md';
