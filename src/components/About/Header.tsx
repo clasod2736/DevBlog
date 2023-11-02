@@ -10,7 +10,7 @@ export default function Header() {
           So nice to meet you!
         </p>
         <p>
-          I'm currently in the process of transitioning my career from{' '}
+          I&apos;m currently in the process of transitioning my career from{' '}
           <strong className="text-yellow-500 mx-1 font-semibold">chef</strong>{' '}
           to
           <strong className="text-blue-400 font-semibold mx-2">

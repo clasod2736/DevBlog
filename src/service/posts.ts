@@ -22,9 +22,14 @@ export type PostData = {
 //     .then((posts) => posts.sort((a, b) => (a.date > b.date ? -1 : 1)));
 // }
 
+export async function getAllPosts(): Promise<Post[]> {
+  const articles = allPosts;
+  return articles.filter((item) => item.articleType === 'post');
+}
+
 //Is this function really need to have?? figure it out later.
 export async function getPostData(): Promise<PostData[]> {
-  const posts = allPosts;
+  const posts = await getAllPosts();
   return posts.map((post) => {
     const date = format(parseISO(post.date), 'LLLL d, yyyy');
 
@@ -41,17 +46,17 @@ export async function getPostData(): Promise<PostData[]> {
   });
 }
 
-export function sortAllPost(): Post[] {
-  const posts = allPosts;
+export async function sortAllPost(): Promise<Post[]> {
+  const posts = await getAllPosts();
   return posts.sort((a, b) => (a.date > b.date ? -1 : 1));
 }
 
 export async function getPostTitles(): Promise<string[]> {
-  const posts = allPosts;
+  const posts = await getAllPosts();
   return posts.map((post) => post.title);
 }
 
 export async function getFeaturedPosts(): Promise<Post[]> {
-  const posts = allPosts;
+  const posts = await getAllPosts();
   return posts.filter((post) => post.featured === true);
 }

@@ -12,9 +12,11 @@ export const Post = defineDocumentType(() => ({
   fields: {
     title: { type: 'string', required: true },
     category: { type: 'string', required: true },
+    tag: { type: 'string', required: true },
     date: { type: 'date', required: true },
     featured: { type: 'boolean', required: true },
     image: { type: 'string', required: true },
+    articleType: { type: 'string', required: true },
   },
   computedFields: {
     url: {
