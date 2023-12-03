@@ -1,12 +1,15 @@
 import Header from '@/components/Snippet/Header';
-import Tag from '@/components/Snippet/Tag';
 import React from 'react';
+import { getAllSnippets, getAllTags } from '@/service/snippets';
+import Snippet from '@/components/Snippet';
 
-export default function page() {
+export default async function page() {
+  const snippets = await getAllSnippets();
+
   return (
     <section>
       <Header />
-      <Tag />
+      <Snippet snippets={snippets} />
     </section>
   );
 }
