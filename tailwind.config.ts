@@ -49,11 +49,16 @@ const config: Config = {
           '0%': { transform: 'translateY(10%)', opacity: '0' },
           '100%': { transform: 'translateY(0%)', opacity: '1' },
         },
+        slideToLeft: {
+          '0%': { transform: 'translateX(10%)', opacity: '0' },
+          '100%': { transform: 'translateX(0%)', opacity: '1' },
+        },
       },
       animation: {
         slideToUp: 'slideToUp .3s ease-in-out',
         fadeIn: 'fadeIn .5s ease-in-out',
         slideToRight: 'slideToRight .5s ease-in-out',
+        slideToLeft: 'slideToLeft .5s ease-in-out',
         slideToUpSlow: 'slideToUpSlow .5s ease-in-out',
       },
       minHeight: {

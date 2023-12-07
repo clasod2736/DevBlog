@@ -1,5 +1,6 @@
 import React from 'react';
 import { Snippet } from '@/service/snippets';
+import SnippetItems from './SnippetItems';
 
 type Props = {
   snippets: Snippet[];
@@ -7,27 +8,9 @@ type Props = {
 };
 
 export default function SnippetGrid({ snippets, filteredSnippets }: Props) {
-  const allSnippets = () => {
-    return (
-      <ul>
-        {snippets.map((snippet) => {
-          return <li key={snippet.date}>{snippet.title}</li>;
-        })}
-      </ul>
-    );
-  };
-
-  const filteredSnippeArr = filteredSnippets;
-  console.log(filteredSnippeArr);
-
-  const handleFilteredSnippets = () => {
-    return (
-      <ul>
-        {filteredSnippets?.map((snippet) => {
-          return <li key={snippet.date}>{snippet.title}</li>;
-        })}
-      </ul>
-    );
-  };
-  return <section>{filteredSnippets !== null ? null : allSnippets()}</section>;
+  return (
+    <section className="py-4">
+      <SnippetItems snippets={snippets} filteredSnippets={filteredSnippets} />
+    </section>
+  );
 }

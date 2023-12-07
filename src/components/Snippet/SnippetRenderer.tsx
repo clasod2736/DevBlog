@@ -1,11 +1,10 @@
 'use client';
 
 import React from 'react';
-import NextAndPrevPost from './NextAndPrevPost';
 import { allPosts, type Post } from 'contentlayer/generated';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { getIndexOfPost } from '@/util/getIndexOfPost';
-import OnThisPage from './OnThisPage';
+import OnThisPage from '../Post/OnThisPage';
 
 export default function PostRenderer(post: Post) {
   const MdxContent = useMDXComponent(post.body.code);
@@ -22,9 +21,6 @@ export default function PostRenderer(post: Post) {
           <MdxContent />
         </div>
       </section>
-      <div>
-        <NextAndPrevPost next={index.next} prev={index.prev} />
-      </div>
     </article>
   );
 }
