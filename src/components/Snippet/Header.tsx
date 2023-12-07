@@ -5,8 +5,10 @@ export default function Header() {
     <article className="mt-4">
       <h1 className="font-bold text-5xl">Code Snippets</h1>
       <div className="gap-4 text-xl font-semibold mt-6">
-        <p>Compact Code pieces or usage that I used in my Project.</p>
-        <p>Useful tips and understands from a learner perspective.💡</p>
+        <p>Compact code pieces or usages that I used in my Projects.</p>
+        <p>
+          Useful tips and understandings from a learner&#39;s perspective.💡
+        </p>
       </div>
     </article>
   );

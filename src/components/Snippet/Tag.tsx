@@ -32,7 +32,6 @@ export default function Tag({ tags }: Props) {
               onClick={() => setSeleted(tag)}
             >
               {tag}
-              {/* <Link href={`/snippet/tag=${tag}`}>{tag}</Link> */}
             </li>
           );
         })}
