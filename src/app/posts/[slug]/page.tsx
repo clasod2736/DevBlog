@@ -2,6 +2,8 @@ import React from 'react';
 import PostRenderer from '@/components/Post/PostRenderer';
 import { allPosts } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
+import { getPostData } from '@/service/posts';
 
 type Props = {
   params: {
@@ -13,6 +15,13 @@ export async function generateStaticParams() {
   return allPosts.map((post) => ({
     slug: post._raw.flattenedPath,
   }));
+}
+export async function generateMetadata({ params: { slug } }: Props) {
+  const postData = await getPostData(decodeURIComponent(slug));
+  return {
+    title: postData.title,
+    description: postData.description,
+  };
 }
 
 export default async function page({ params: { slug } }: Props) {

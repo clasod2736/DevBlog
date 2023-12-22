@@ -3,8 +3,13 @@ import FilterablePosts from '@/components/FilteredPosts/FilterablePosts';
 import Header from '@/components/FilteredPosts/Header';
 
 import { allPosts } from 'contentlayer/generated';
-import { getAllPosts } from '@/service/posts';
 import { getCategory, getTotalPostNumb } from '@/service/category';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'JoonDev Blog Posts',
+  description: 'All of the posts of my Web dev journey',
+};
 
 export default async function page() {
   const posts = allPosts.filter((item) => item.articleType === 'post');

@@ -1,6 +1,3 @@
-// import path from 'path';
-// import { readFile } from 'fs/promises';
-
 const readingTime = require('reading-time');
 import { allPosts, type Post } from 'contentlayer/generated';
 import { format, parseISO } from 'date-fns';
@@ -12,15 +9,8 @@ export type PostData = {
   featured: boolean;
   image: string;
   time: string;
+  description: string;
 };
-
-//local direction in server component
-// export async function getAllPost(): Promise<Post[]> {
-//   const filePath = path.join(process.cwd(), 'src', 'data', 'posts.json');
-//   return readFile(filePath, 'utf-8')
-//     .then<Post[]>(JSON.parse)
-//     .then((posts) => posts.sort((a, b) => (a.date > b.date ? -1 : 1)));
-// }
 
 export async function getAllPosts(): Promise<Post[]> {
   const articles = allPosts;
@@ -28,22 +18,23 @@ export async function getAllPosts(): Promise<Post[]> {
 }
 
 //Is this function really need to have?? figure it out later.
-export async function getPostData(): Promise<PostData[]> {
+export async function getPostData(slug: string): Promise<any> {
   const posts = await getAllPosts();
-  return posts.map((post) => {
-    const date = format(parseISO(post.date), 'LLLL d, yyyy');
+  const post = posts.find((post) => post.title === slug);
+  // const date = format(parseISO(post.date), 'LLLL d, yyyy');
 
-    const time = readingTime(post.body.code);
+  // const time = readingTime(post.body.code);
 
-    return {
-      title: post.title,
-      date: date,
-      category: post.category,
-      featured: post.featured,
-      image: post.image,
-      time: time,
-    };
-  });
+  // return {
+  //   title: post.title,
+  //   date: date,
+  //   category: post.category,
+  //   featured: post.featured,
+  //   image: post.image,
+  //   time: time,
+  //   description: post.description,
+  // };
+  return post;
 }
 
 export async function sortAllPost(): Promise<Post[]> {

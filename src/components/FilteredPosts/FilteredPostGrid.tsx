@@ -5,7 +5,6 @@ import FilteredPostCard from './FilteredPostCard';
 type Props = { posts: Post[] };
 
 export default function FilteredPostGrid({ posts }: Props) {
-  console.log(posts);
   return (
     <ul className="w-full grid md:grid-cols-2 xs:grid-cols-1 gap-4 justify-start items-start my-8 min-h-[300px]">
       {posts.map((post) => (

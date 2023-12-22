@@ -10,8 +10,9 @@ import NextTopLoader from 'nextjs-toploader';
 const figTree = Source_Sans_3({ subsets: ['latin'] });
 //Metadata for SEO
 export const metadata: Metadata = {
-  title: 'joon-dev-blog',
-  description: 'daily writing from my tech journey',
+  title: { default: 'JoonDev', template: '' },
+  description:
+    'Daily writes what I learn from my coding journey in Web development',
 };
 
 export default async function RootLayout({
