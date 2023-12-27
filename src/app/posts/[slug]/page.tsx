@@ -2,7 +2,6 @@ import React from 'react';
 import PostRenderer from '@/components/Post/PostRenderer';
 import { allPosts } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
 import { getPostData } from '@/service/posts';
 
 type Props = {

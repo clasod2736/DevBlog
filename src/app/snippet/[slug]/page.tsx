@@ -2,7 +2,6 @@ import React from 'react';
 import SnippetRenderer from '@/components/Snippet/SnippetRenderer';
 import { allPosts } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
 import { getPostData } from '@/service/posts';
 
 type Props = {
@@ -16,22 +15,14 @@ export async function generateStaticParams() {
     slug: post._raw.flattenedPath,
   }));
 }
-async function postData() {
-  const data = await getPostData();
-  console.log(data);
-}
-postData();
-// export async function generateMetadata({
-//   params: { slug },
-// }: Props) {
-//   const postData = await getPostData()
-//   const matchedPostData = () => postData.filter((post) => post.title === slug)
 
-//   return {
-//     title: matchedPostData.title,
-//     description: matchedPostData.description,
-//   };
-// }
+export async function generateMetadata({ params: { slug } }: Props) {
+  const postData = await getPostData(decodeURIComponent(slug));
+  return {
+    title: postData.title,
+    description: postData.description,
+  };
+}
 
 export default async function page({ params: { slug } }: Props) {
   const posts = allPosts;

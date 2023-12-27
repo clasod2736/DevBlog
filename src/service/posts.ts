@@ -1,6 +1,5 @@
 const readingTime = require('reading-time');
 import { allPosts, type Post } from 'contentlayer/generated';
-import { format, parseISO } from 'date-fns';
 
 export type PostData = {
   title: string;
@@ -19,21 +18,9 @@ export async function getAllPosts(): Promise<Post[]> {
 
 //Is this function really need to have?? figure it out later.
 export async function getPostData(slug: string): Promise<any> {
-  const posts = await getAllPosts();
+  const posts = allPosts;
+  console.log(posts);
   const post = posts.find((post) => post.title === slug);
-  // const date = format(parseISO(post.date), 'LLLL d, yyyy');
-
-  // const time = readingTime(post.body.code);
-
-  // return {
-  //   title: post.title,
-  //   date: date,
-  //   category: post.category,
-  //   featured: post.featured,
-  //   image: post.image,
-  //   time: time,
-  //   description: post.description,
-  // };
   return post;
 }
 
