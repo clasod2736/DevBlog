@@ -24,6 +24,9 @@ export default async function RootLayout({
     <html className={`dark:bg-zinc-900 ${figTree.className}`}>
       <head>
         <link rel="icon" href="/images/favicon.png" />
+        <meta property="og:title" content="JoonDev Blog" />
+        <meta property="og:url" content="" />
+        <meta property="og:image" content="/images/favicon.png" />
       </head>
       <body className="flex flex-row w-full h-screen justify-center items-start dark:bg-zinc-900 text-zinc-800 dark:text-zinc-300 scroll-smooth">
         <section className="flex flex-col justify-start items-center h-auto w-full px-6 dark:bg-zinc-900">

@@ -19,7 +19,6 @@ export async function getAllPosts(): Promise<Post[]> {
 //Is this function really need to have?? figure it out later.
 export async function getPostData(slug: string): Promise<any> {
   const posts = allPosts;
-  console.log(posts);
   const post = posts.find((post) => post.title === slug);
   return post;
 }

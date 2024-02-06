@@ -21,7 +21,7 @@ export default function SnippetItems({ snippets, filteredSnippets }: Props) {
           key={item.date}
           className="flex flex-col justify-center items-start w-1/2 h-auto"
         >
-          <Link href={`./snippet/${item.title}`}>
+          <Link href={`./${item.title}`}>
             <li
               className={`flex flex-row justify-start items-center rounded-md gap-3 text-2xl px-3 py-1 hover:bg-zinc-300 dark:hover:bg-zinc-600 transition-all animate-slideToLeft`}
             >

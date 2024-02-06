@@ -8,6 +8,11 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
+  output: 'export',
 };
 
 module.exports = withContentlayer(nextConfig);
