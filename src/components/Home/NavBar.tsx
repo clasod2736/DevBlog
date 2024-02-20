@@ -9,6 +9,10 @@ import MobileNavBar from './Navbar/MobileNavBar';
 export default function NavBar() {
   const [toggle, setToggle] = useState(false);
 
+  const closeToggle = (data: boolean) => {
+    setToggle(data);
+  };
+
   useEffect(() => {
     if (window.screenX >= 640) {
       setToggle(false);
@@ -29,7 +33,7 @@ export default function NavBar() {
         />
       </section>
       <section className={`${toggle ? 'sm:flex' : 'hidden'} sm:hidden`}>
-        <MobileNavBar />
+        <MobileNavBar closeToggle={closeToggle} />
       </section>
       <nav className="sm:flex flex-row justify-between items-base text-center w-auto h-1/3 gap-6 text-xl xs:hidden">
         <Link
