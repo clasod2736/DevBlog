@@ -7,9 +7,9 @@ import Projects from '@/components/About/Projects';
 export default function page() {
   return (
     <>
-      <section className="flex flex-row">
+      <section className="flex md:flex-row flex-col">
         <Side />
-        <div className="flex flex-col justify-start mt-10 gap-4 ml-8">
+        <div className="flex flex-col justify-start mt-10 gap-4 md:ml-8">
           <Header />
           <Skills />
           <Projects />

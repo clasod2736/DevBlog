@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Header() {
   return (
-    <article className="flex flex-col w-auto justify-start text-xl">
+    <article className="flex flex-col w-auto justify-start text-xl px-2 md:p-0">
       <h3 className="text-3xl mb-2 font-semibold">Hi! Im Joon.</h3>
       <div className="text-zinc-500 dark:text-zinc-300">
         <p>

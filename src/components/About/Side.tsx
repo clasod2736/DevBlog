@@ -5,10 +5,16 @@ import { MdEmail } from 'react-icons/md';
 
 export default function Side() {
   return (
-    <section className="flex flex-col w-1/5 mt-10">
-      <Image src={'/images/about.png'} alt="logo" width={500} height={1} />
+    <section className="md:flex md:flex-col hidden md:w-1/5 w-full mt-10">
+      <Image
+        src={'/images/about.png'}
+        className="hidden md:flex"
+        alt="logo"
+        width={500}
+        height={1}
+      />
       <div className="mt-6 gap-8 pl-4">
-        <ul className="text-md text-slate-600 dark:text-slate-400 flex flex-col justify-center gap-4">
+        <ul className="text-md text-slate-600 dark:text-slate-400 flex md:flex-col flex-row justify-center md:gap-4 gap-10">
           <li className="flex flex-row items-center gap-2">
             <MdEmail size={25} />
             <a

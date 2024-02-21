@@ -5,7 +5,7 @@ export default function Skills() {
     <section className="py-4 mt-4">
       <h3 className="text-3xl font-semibold">Skills.</h3>
       <div className="mt-2 py-2 border-t-[1px] border-zinc-500">
-        <ul className="flex flex-row text-xl font-semibold justify-start w-auto h-full gap-6 italic ">
+        <ul className="flex flex-wrap text-xl font-semibold justify-start w-auto h-full gap-6 italic ">
           <li>React</li>
           <li>Next.js</li>
           <li>Typescript</li>
@@ -13,6 +13,7 @@ export default function Skills() {
           <li>MongoDB</li>
           <li>PostCSS</li>
           <li>Tailwind</li>
+          <li>AWS</li>
           <p className=" text-[1rem] text-end">and more...</p>
         </ul>
       </div>
