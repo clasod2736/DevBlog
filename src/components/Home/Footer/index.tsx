@@ -6,7 +6,7 @@ import Links from './Links';
 
 export default function Footer() {
   return (
-    <section className=" xs:h-24 sm:h-20 flex flex-col w-full justify-end animate-fadeIn border-t-2 border-zinc-300 my-8 gap-1">
+    <section className=" xs:h-24 sm:h-20 flex flex-col w-full justify-end animate-fadeIn border-t-2 border-zinc-300 my-2 gap-1">
       <div className="flex flex-row justify-end text-2xl gap-2">
         <Links />
       </div>

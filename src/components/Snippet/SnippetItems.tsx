@@ -19,7 +19,7 @@ export default function SnippetItems({ snippets, filteredSnippets }: Props) {
       arr?.map((item) => (
         <ul
           key={item.date}
-          className="flex flex-col justify-center items-start w-1/2 h-auto"
+          className="flex flex-col justify-center items-start w-full h-auto"
         >
           <Link href={`./${item.title}`}>
             <li

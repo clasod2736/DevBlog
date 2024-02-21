@@ -7,7 +7,7 @@ export default function SearchBar() {
   const { setSearchVal } = useContext(SnippetContext);
 
   return (
-    <section className="flex flex-col justify-center w-4/5 h-20 ">
+    <section className="flex flex-col justify-center md:w-10/12 max-w-[1000px] w-full h-20 ">
       <input
         type="text"
         placeholder="Search Snippets"
