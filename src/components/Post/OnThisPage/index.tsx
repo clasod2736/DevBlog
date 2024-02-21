@@ -32,7 +32,7 @@ export default function OnThisPage(props: Props) {
   };
 
   return (
-    <section className="sticky top-40 mt-24 min-w-[240px] h-1/6 font-light">
+    <section className="md:sticky top-40 mt-24 min-w-[240px] h-1/6 font-light">
       <p className="text-lg my-4 text-zinc-500 dark:text-zinc-400">
         On This Page
       </p>
