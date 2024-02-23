@@ -8,11 +8,11 @@ import NextTopLoader from 'nextjs-toploader';
 
 //google font
 const figTree = Source_Sans_3({ subsets: ['latin'] });
-//Metadata for SEO
+
+//Metadata
 export const metadata: Metadata = {
   title: { default: 'JoonDev', template: '' },
-  description:
-    'Daily writes what I learn from my coding journey in Web development',
+  description: 'Passionate for simplifying complex tasks into lean solutions.',
 };
 
 export default async function RootLayout({
@@ -24,9 +24,14 @@ export default async function RootLayout({
     <html className={`dark:bg-zinc-900 ${figTree.className}`}>
       <head>
         <link rel="icon" href="/images/favicon.png" />
-        <meta property="og:title" content="JoonDev Blog" />
-        <meta property="og:url" content="" />
+        <meta property="og:title" content="Joondev-blog" />
+        <meta property="og:url" content="joondev.blog" />
         <meta property="og:image" content="/images/favicon.png" />
+        <meta property="og:url" content="https://joondev.blog" />
+        <meta
+          property="og:description"
+          content="Passionate for simplifying complex tasks into lean solutions."
+        />
       </head>
       <body className="flex flex-row w-full h-screen justify-center items-start dark:bg-zinc-900 text-zinc-800 dark:text-zinc-300 scroll-smooth">
         <section className="flex flex-col justify-start items-center h-auto w-full px-6 dark:bg-zinc-900">
