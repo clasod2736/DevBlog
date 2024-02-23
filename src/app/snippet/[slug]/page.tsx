@@ -1,4 +1,5 @@
 import React from 'react';
+import { Metadata } from 'next';
 import SnippetRenderer from '@/components/Snippet/SnippetRenderer';
 import { allPosts } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
@@ -21,6 +22,11 @@ export async function generateMetadata({ params: { slug } }: Props) {
   return {
     title: postData.title,
     description: postData.description,
+    openGraph: {
+      title: `${postData.title}`,
+      description: `${postData.description}`,
+      images: '/images/favicon.png',
+    },
   };
 }
 
@@ -34,6 +40,8 @@ export default async function page({ params: { slug } }: Props) {
   const filteredPosts = compiledPosts.filter((post) => {
     return post.props._raw.flattenedPath === decodedSlug;
   });
+
+  // const metadata = await generateMetadata({ params: { slug } });
 
   return (
     <section className="h-auto w-full max-w-full mt-8 prose prose-stone prose-lg dark:prose-dark animate-fadeIn scroll-smooth">
