@@ -41,8 +41,6 @@ export default async function page({ params: { slug } }: Props) {
     return post.props._raw.flattenedPath === decodedSlug;
   });
 
-  // const metadata = await generateMetadata({ params: { slug } });
-
   return (
     <section className="h-auto w-full max-w-full mt-8 prose prose-stone prose-lg dark:prose-dark animate-fadeIn scroll-smooth">
       {filteredPosts.length > 0
