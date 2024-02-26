@@ -21,11 +21,6 @@ export async function generateMetadata({ params: { slug } }: Props) {
   return {
     title: postData.title,
     description: postData.description,
-    openGraph: {
-      title: `${postData.title}`,
-      description: `${postData.description}`,
-      images: '/images/favicon.png',
-    },
   };
 }
 
