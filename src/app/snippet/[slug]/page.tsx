@@ -1,5 +1,4 @@
 import React from 'react';
-import { Metadata } from 'next';
 import SnippetRenderer from '@/components/Snippet/SnippetRenderer';
 import { allPosts } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
