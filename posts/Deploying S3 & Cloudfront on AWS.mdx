@@ -9,17 +9,21 @@ articleType: post
 description: 'How to deploy static web-site within AWS S3, Cloudfront environment.'
 ---
 
-# Deploying Static web-site(Next.js) on AWS S3 & Cloudfront (Route53)
+# Deploying Static web-site(Next.js) on AWS S3 & Cloudfront with custom domain. (Route53)
 
 #### First serverless experience
 
-## Set up S3
+## 1. Set up S3
 
-### Bucket setting
+1. Set region near you and bucket name.
 
-1. Set region near you nad bucket name.
-2. Check object ownership to <strong>ACLs disabled(recommended)</strong>
-3. Block all public access (img below)
+---
+
+2. Check object ownership to <u><strong style={"color:yellow"}>ACLs disabled(recommended)</strong></u>
+
+---
+
+3. Block all public access
    <img
      src={
        '/images/posts/Deploying S3 & Cloudfront on AWS/bucket public access.jpg'
@@ -28,3 +32,210 @@ description: 'How to deploy static web-site within AWS S3, Cloudfront environmen
      style={{ height: 'auto', width: '100%' }}
      alt={'bucket1'}
    />
+
+---
+
+4. Go to "Property" category edit "Static web hosting" section
+   <img
+     src={'/images/posts/Deploying S3 & Cloudfront on AWS/bucket2.jpg'}
+     class="inline"
+     style={{ height: 'auto', width: '100%' }}
+     alt={'bucket2'}
+   />
+   Check the boxes like image and put "index/html" for both documents in input and
+   press "Save" ---
+5. Upload objects of your web-app
+   If you built web-app in Next.js you need to set a few config in next.config.js file =><u><strong style={"color:yellow"}>for next.js "13.5.4" version</strong></u>
+
+```
+// basic next.config.js codes you need to add  "output: 'export'" property
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',
+}
+
+module.exports = nextConfig
+
+//and add a "deploy" command in your package.json file like this
+"scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "deploy": "next build && next export",
+  }
+```
+
+---
+
+6. Then now time to go to connect Cloudfront.
+
+## 2. Cloudfront
+
+1. Create Distribution with basic setting.
+
+   - Choose orgiin domain that appear automatically in dropdown as S3 endpoint.
+
+2. Cache behavior section.
+   <img
+     src={'/images/posts/Deploying S3 & Cloudfront on AWS/cloudfront1.jpg'}
+     class="inline"
+     style={{ height: 'auto', width: '100%' }}
+     alt={'cloudfront1'}
+   />
+   Make sure you check "Redirect HTTP to HTTPS" and CachingOptimazed in Cache policy.
+   Rest of setting keep default and press "Create distribution"
+
+---
+
+3. Set HTTPS with SSL certificates.
+   Go to general category in the distribution that you just create.
+   <img
+     src={'/images/posts/Deploying S3 & Cloudfront on AWS/cloudfront2.jpg'}
+     class="inline"
+     style={{ height: 'auto', width: '100%' }}
+     alt={'cloudfront2'}
+   />
+   and add your custom domain like "example.com" and "*.example.com" as well and
+   click request certificate button check public certi, and add the same 2 domains
+   and check <b>DNS validation</b>
+   <b style={'color:yellow'}>
+     <u>You must set your "Region" to us-east-1 (N.Virginia)!!</u>
+   </b>
+   and press request, it will take around 10min ~ hour to validate the
+   certificate. once you got certificate set the option lie upon image.
+4. Origin setting.
+   <img
+     src={'/images/posts/Deploying S3 & Cloudfront on AWS/cloudfront3.jpg'}
+     class="inline"
+     style={{ height: 'auto', width: '100%' }}
+     alt={'cloudfront3'}
+   />
+   In origin category you can select origin S3 domain, but don't put the website
+   endpoint because we weill use OAC in this case. press <b>Create new OAC</b> and
+   make OAC with sign requests. once you set OAC click "copy policy" and go back
+   to S3 Policy and paste the policies.
+
+```
+{
+	"Version": "2008-10-17",
+	"Id": "PolicyForCloudFrontPrivateContent",
+	"Statement": [
+		{
+			"Sid": "AllowCloudFrontServicePrincipal",
+			"Effect": "Allow",
+			"Principal": {
+				"Service": "cloudfront.amazonaws.com"
+			},
+			"Action": "s3:GetObject",
+			"Resource": "arn:aws:s3:::[Your S3 bucket name]/*",
+			"Condition": {
+				"StringEquals": {
+					"AWS:SourceArn": [Your Cloudfront ID]
+				}
+			}
+		}
+	]
+}
+```
+
+## This is how your policy will be, then you finished you origin setting.
+
+5. Error pages setting.
+   Go to Error pages category in distribution, click "create custom response" button.
+   Make custom error page for 403 & 404 error like image below.
+   {' '}
+   <img
+     src={'/images/posts/Deploying S3 & Cloudfront on AWS/cloudfront4.jpg'}
+     class="inline"
+     style={{ height: 'auto', width: '100%' }}
+     alt={'cloudfront4'}
+   />
+   ---
+
+## 3. Connect custom domain in Route53 & ACM
+
+1. Go to Route53 create hosted zone.
+   Put custom domain you will use and check "Public hosted zone" and "Create hosted zone"
+
+---
+
+2. Add name-server values in your domain platform.
+   Inside of hosted zone page you wil see the record that has <b style={"color:yellow"}>"NS"</b> then copy those 4 values and add in your domain platform.
+
+---
+
+3. Create record type "A"
+   <img
+     src={'/images/posts/Deploying S3 & Cloudfront on AWS/cloudfront6.jpg'}
+     class="inline"
+     style={{ height: 'auto', width: '100%' }}
+     alt={'cloudfront6'}
+   />
+   Set type "A" and toggle "Alias" and Route traffic to Cloudfront distribution,
+   then you will see your distribution domain.
+
+---
+
+4. Go to ACM service and click your certificate for your cloudfront distribution.
+   <img
+     src={'/images/posts/Deploying S3 & Cloudfront on AWS/cloudfront5.jpg'}
+     class="inline"
+     style={{ height: 'auto', width: '100%' }}
+     alt={'cloudfront5'}
+   />
+   Press "Create records in Route 53" button and click "Create records" then added
+   the CNAME type record in Route53 hosted zone. Finally you will have 4 records
+   in Route53 types with "A", "NS", "SOA", "CNAME"
+
+---
+
+## 4. Build CD pipeline with Github Actions.
+
+Make direction "/.github/workflows/main.yml" in your Next.js project root directory.
+Set your code like below.
+
+```
+name: My App Name
+
+on:
+  push:
+    branches: main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code.
+        uses: actions/checkout@main
+        with:
+          ref: main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: |
+          npm install
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: My App Name
+        run: |
+          npm run deploy
+
+      - name: Deploy to S3
+        run: aws s3 sync ./out s3://joondev.blog --delete
+
+      - name: Invalidate CloudFront Cache
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths "/*"
+```
+
+So now if you push your github repository, Github actions automatically upload your "out" folder (which is like "build" folder in React)
+and AWS will deploy your web-appliction.
