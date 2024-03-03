@@ -6,7 +6,25 @@ date: 2024-03-02
 featured: false
 image: none
 articleType: post
-description: ''
+description: 'How to deploy static web-site within AWS S3, Cloudfront environment.'
 ---
 
-# This is the first blog post!!
+# Deploying Static web-site(Next.js) on AWS S3 & Cloudfront (Route53)
+
+#### First serverless experience
+
+## Set up S3
+
+### Bucket setting
+
+1. Set region near you nad bucket name.
+2. Check object ownership to <strong>ACLs disabled(recommended)</strong>
+3. Block all public access (img below)
+   <img
+     src={
+       '/images/posts/Deploying S3 & Cloudfront on AWS/bucket public access.jpg'
+     }
+     class="inline"
+     style={{ height: '30px', width: '30px' }}
+     alt={'bucket1'}
+   />

@@ -60,6 +60,10 @@ export default makeSource({
   documentTypes: [Post],
   mdx: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [[rehypePrettyCode, options], [rehypeSlug]],
+    rehypePlugins: [
+      [rehypePrettyCode, options],
+      [rehypeSlug],
+      // [rehypeImgSize, { dir: 'public' }],
+    ],
   },
 });
