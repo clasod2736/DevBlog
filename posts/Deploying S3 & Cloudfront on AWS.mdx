@@ -16,7 +16,7 @@ description: 'How to deploy static web-site within AWS S3, Cloudfront environmen
 ## 1. Set up S3
 
 1. Set region near you and bucket name.
-2. Check object ownership to <u><strong style={{color:'yellow'}}>ACLs disabled(recommended)</strong></u>
+2. Check object ownership to <u><strong style={{color:'darkgoldenrod'}}>ACLs disabled(recommended)</strong></u>
 
 3. Block all public access
 
@@ -39,7 +39,7 @@ description: 'How to deploy static web-site within AWS S3, Cloudfront environmen
    Check the boxes like image and put "index/html" for both documents in input and
    press "Save"{' '}
 5. Upload objects of your web-app
-   If you built web-app in Next.js you need to set a few config in next.config.js file =><u><strong style={{color:'yellow'}}>for next.js "13.5.4" version</strong></u>
+   If you built web-app in Next.js you need to set a few config in next.config.js file =><u><strong style={{color:'darkgoldenrod'}}>for next.js "13.5.4" version</strong></u>
 
 ```
 // basic next.config.js codes you need to add  "output: 'export'" property
@@ -92,7 +92,7 @@ module.exports = nextConfig
    and add your custom domain like "example.com" and "*.example.com" as well and
    click request certificate button check public certi, and add the same 2 domains
    and check <b>DNS validation</b>
-   <b style={{ color: 'yellow' }}>
+   <b style={{ color: 'darkgoldenrod' }}>
      <u>You must set your "Region" to us-east-1 (N.Virginia)!!</u>
    </b>
    and press request, it will take around 10min ~ hour to validate the
@@ -153,7 +153,7 @@ This is how your policy will be, then you finished you origin setting.
    Put custom domain you will use and check "Public hosted zone" and "Create hosted zone"
 
 2. Add name-server values in your domain platform.
-   Inside of hosted zone page you wil see the record that has <b style={{color:'yellow'}}>"NS"</b> then copy those 4 values and add in your domain platform.
+   Inside of hosted zone page you wil see the record that has <b style={{color:'darkgoldenrod'}}>"NS"</b> then copy those 4 values and add in your domain platform.
 
 3. Create record type "A"
 
