@@ -16,14 +16,10 @@ description: 'How to deploy static web-site within AWS S3, Cloudfront environmen
 ## 1. Set up S3
 
 1. Set region near you and bucket name.
-
----
-
 2. Check object ownership to <u><strong style={{color:'yellow'}}>ACLs disabled(recommended)</strong></u>
 
----
-
 3. Block all public access
+
    <img
      src={
        '/images/posts/Deploying S3 & Cloudfront on AWS/bucket public access.jpg'
@@ -33,17 +29,15 @@ description: 'How to deploy static web-site within AWS S3, Cloudfront environmen
      alt={'bucket1'}
    />
 
----
-
 4. Go to "Property" category edit "Static web hosting" section
    <img
-     src={'/images/posts/Deploying S3 & Cloudfront on AWS/bucket2.jpg'}
+     src={'/images/posts/Deploying S3 & Cloudfront on AWS/bucket2.png'}
      class="inline"
      style={{ height: 'auto', width: '100%' }}
      alt={'bucket2'}
    />
    Check the boxes like image and put "index/html" for both documents in input and
-   press "Save" ---
+   press "Save"{' '}
 5. Upload objects of your web-app
    If you built web-app in Next.js you need to set a few config in next.config.js file =><u><strong style={{color:'yellow'}}>for next.js "13.5.4" version</strong></u>
 
@@ -66,9 +60,9 @@ module.exports = nextConfig
   }
 ```
 
----
-
 6. Then now time to go to connect Cloudfront.
+
+---
 
 ## 2. Cloudfront
 
@@ -77,8 +71,9 @@ module.exports = nextConfig
    - Choose orgiin domain that appear automatically in dropdown as S3 endpoint.
 
 2. Cache behavior section.
+
    <img
-     src={'/images/posts/Deploying S3 & Cloudfront on AWS/cloudfront1.jpg'}
+     src={'/images/posts/Deploying S3 & Cloudfront on AWS/cloudfront1.png'}
      class="inline"
      style={{ height: 'auto', width: '100%' }}
      alt={'cloudfront1'}
@@ -86,12 +81,10 @@ module.exports = nextConfig
    Make sure you check "Redirect HTTP to HTTPS" and CachingOptimazed in Cache policy.
    Rest of setting keep default and press "Create distribution"
 
----
-
 3. Set HTTPS with SSL certificates.
    Go to general category in the distribution that you just create.
    <img
-     src={'/images/posts/Deploying S3 & Cloudfront on AWS/cloudfront2.jpg'}
+     src={'/images/posts/Deploying S3 & Cloudfront on AWS/cloudfront2.png'}
      class="inline"
      style={{ height: 'auto', width: '100%' }}
      alt={'cloudfront2'}
@@ -106,7 +99,7 @@ module.exports = nextConfig
    certificate. once you got certificate set the option lie upon image.
 4. Origin setting.
    <img
-     src={'/images/posts/Deploying S3 & Cloudfront on AWS/cloudfront3.jpg'}
+     src={'/images/posts/Deploying S3 & Cloudfront on AWS/cloudfront3.png'}
      class="inline"
      style={{ height: 'auto', width: '100%' }}
      alt={'cloudfront3'}
@@ -139,35 +132,33 @@ module.exports = nextConfig
 }
 ```
 
-## This is how your policy will be, then you finished you origin setting.
+This is how your policy will be, then you finished you origin setting.
 
 5. Error pages setting.
    Go to Error pages category in distribution, click "create custom response" button.
    Make custom error page for 403 & 404 error like image below.
    {' '}
    <img
-     src={'/images/posts/Deploying S3 & Cloudfront on AWS/cloudfront4.jpg'}
+     src={'/images/posts/Deploying S3 & Cloudfront on AWS/cloudfront4.png'}
      class="inline"
      style={{ height: 'auto', width: '100%' }}
      alt={'cloudfront4'}
    />
-   ---
+
+---
 
 ## 3. Connect custom domain in Route53 & ACM
 
 1. Go to Route53 create hosted zone.
    Put custom domain you will use and check "Public hosted zone" and "Create hosted zone"
 
----
-
 2. Add name-server values in your domain platform.
    Inside of hosted zone page you wil see the record that has <b style={{color:'yellow'}}>"NS"</b> then copy those 4 values and add in your domain platform.
 
----
-
 3. Create record type "A"
+
    <img
-     src={'/images/posts/Deploying S3 & Cloudfront on AWS/cloudfront6.jpg'}
+     src={'/images/posts/Deploying S3 & Cloudfront on AWS/cloudfront6.png'}
      class="inline"
      style={{ height: 'auto', width: '100%' }}
      alt={'cloudfront6'}
@@ -175,11 +166,9 @@ module.exports = nextConfig
    Set type "A" and toggle "Alias" and Route traffic to Cloudfront distribution,
    then you will see your distribution domain.
 
----
-
 4. Go to ACM service and click your certificate for your cloudfront distribution.
    <img
-     src={'/images/posts/Deploying S3 & Cloudfront on AWS/cloudfront5.jpg'}
+     src={'/images/posts/Deploying S3 & Cloudfront on AWS/cloudfront5.png'}
      class="inline"
      style={{ height: 'auto', width: '100%' }}
      alt={'cloudfront5'}
