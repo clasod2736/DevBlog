@@ -1,19 +1,30 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import NextAndPrevPost from './NextAndPrevPost';
-import { allPosts, type Post } from 'contentlayer/generated';
+import { type Post } from 'contentlayer/generated';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { getIndexOfPost } from '@/util/getIndexOfPost';
+import { getAllPosts } from '@/service/posts';
 import OnThisPage from './OnThisPage';
 
 export default function PostRenderer(post: Post) {
+  const [selectedPosts, setSelectedPosts] = useState<Post[]>([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const posts = await getAllPosts();
+      setSelectedPosts(posts);
+    };
+    fetchPosts();
+  }, []);
+
   const MdxContent = useMDXComponent(post.body.code);
 
-  const index = getIndexOfPost({ posts: allPosts, post: post });
+  const index = getIndexOfPost({ posts: selectedPosts, post: post });
 
   return (
-    <article className="w-auto">
+    <article className="w-full">
       <section className="flex xs:flex-col lg:flex-row-reverse justify-start">
         <div className="lg:flex lg:flex-row xs:hidden lg:w-1/2 min-w-32 pl-12 transition-all">
           <OnThisPage headings={post.headings} />
