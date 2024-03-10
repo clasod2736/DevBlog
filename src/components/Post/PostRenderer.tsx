@@ -25,7 +25,7 @@ export default function PostRenderer(post: Post) {
 
   return (
     <article className="w-full">
-      <section className="flex xs:flex-col lg:flex-row-reverse justify-start">
+      <section className="flex xs:flex-col lg:flex-row-reverse justify-start w-full">
         <div className="lg:flex lg:flex-row xs:hidden lg:w-1/2 min-w-32 pl-12 transition-all">
           <OnThisPage headings={post.headings} />
         </div>
