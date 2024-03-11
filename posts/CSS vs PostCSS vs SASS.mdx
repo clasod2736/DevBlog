@@ -11,7 +11,7 @@ description: 'Distinction between 3 different CSS frameworks.'
 
 # CSS vs PostCSS vs SASS and...Tailwind.
 
-###### Which one is the best CSS framework???
+##### Which one is the best CSS framework???
 
 I would like to share my experiences and viewpoints on three popular CSS frameworks in my post that I have used. I have used these frameworks in various personal projects, and below are their pros and cons:
 
@@ -43,11 +43,12 @@ SASS & SCSS are "CSS Preprocessor" they provide advanced maintainability and rea
 
 <br />
 
-###### What is the difference between SASS and SCSS?
+##### What is the difference between SASS and SCSS?
 
-Just grammers are different between them, examples below
+Just little bit of grammars are different, examples below.
 
 ```sass
+//SASS codes
 .example
         width: 100px
         li
@@ -55,6 +56,7 @@ Just grammers are different between them, examples below
 ```
 
 ```scss
+//SCSS codes
 .example {
   width: 100px;
   li {
@@ -62,3 +64,356 @@ Just grammers are different between them, examples below
   }
 }
 ```
+
+For me, Im using SCSS because the I'm more familiar with SCSS grammars.
+
+###### Perks of CSS preproccessors.
+
+1. Import
+2. Variables, Mixin
+3. Nesting
+4. if and for methods
+
+```css
+// import in SCSS & SASS
+// We can import css units from another css files through import.
+// Examples below
+
+@import 'hello.css';
+@import 'http://hello.com/hello';
+@import url(hello);
+@import 'hello' screen;
+@import 'header', 'footer';
+
+// Variable, Mixin
+// Declare Variables insied of CSS file with "$" command
+// Make custom style element with "@mixin"
+
+//Variable
+$main-color: 'red';
+
+body {
+  background-color: $main-color;
+}
+
+//Mixin
+@mixin large-text {
+  font: {
+    size: 22px;
+    weight: bold;
+    family: sans-serif;
+  }
+  color: orange;
+
+  &::after {
+    content: '!!';
+  }
+
+  span.icon {
+    background: url('/images/icon.png');
+  }
+}
+
+h1 {
+  @include large-text;
+}
+div {
+  @include large-text;
+}
+
+// Nesting CSS units, it gives way better readability.
+
+//css
+nav ul {
+  background-color: 'red';
+}
+nav li {
+  color: 'white';
+}
+nav h4 {
+  font-family: 'noto-sans';
+}
+
+//scss
+nav {
+  ul {
+    background-color: 'red';
+  }
+  li {
+    color: 'white';
+  }
+  h4 {
+    font-family: 'noto-sans';
+  }
+}
+
+// We could use "if" and "for" with variables in CSS file with SCSS & SASS
+
+// If method
+// set variable
+$section-v1: 900px;
+$section-v2: 500px;
+
+.section-v1,
+.section-v1 {
+  height: 100px;
+}
+
+//use if method like in javascript
+.section-v1 {
+  width: $section-v1;
+  @if ($section-v1 >= 700) {
+    background-color: coral;
+  } @else {
+    background-color: orange;
+  }
+}
+.section-v2 {
+  width: $section-v2;
+  @if ($section-v2 >= 700) {
+    background-color: coral;
+  } @else {
+    background-color: orange;
+  }
+}
+
+// You could add "and", "or", "not"
+.section-v1 {
+  width: $section-v1;
+  @if $section-v1 >= 0 and $section-v1 <= 1000 {
+    background-color: coral;
+  } @else {
+    background-color: orange;
+  }
+}
+
+// For method
+// When you want to set some repeating units.
+
+// repeat from 1to 3
+@for $i from 1 through 3 {
+  .through:nth-child(3n + #{$i}) {
+    width: 50px * $i;
+  }
+}
+
+// repeat from 1to 2
+@for $i from 1 to 3 {
+  .to:nth-child(3n + #{$i}) {
+    width: 50px * $i;
+  }
+}
+```
+
+###### Pros
+
+1. Maintainability: Nesting and import functions are useful to improve readability and reusability.
+2. Well-documented: SCSS & SASS is the most popular CSS framework of the world, research and communities are very active.
+3. Dynamic CSS: Could manage CSS units dynamically with if and for methods.
+
+###### Cons
+
+1. Mixin: If you use "Mixin" too much, it could make lower performance because when compiling to CSS file; Mixin methods are more heavier than class unit.
+2. Compiling: Browser cannot understand CSS preproccessor grammer, so need to compile everytime before run or deploy.
+
+## PostCSS
+
+##### What is PostCSS?
+
+PostCSS is a tool for transforming styles with JS plugins.
+So only PostCSS itself, it doesn't do any work actually. PostCSS has many useful plugin that help us to make powerful CSS.
+For beginner, the best point is simplifying "className" in .jsx files with import "Styles" from "\*.module.css" file.
+you could give the className "{styles.sampleClassName}" to highest element and write nested CSS code in modul css file. It's so cool!
+
+```css
+// Introduce most common plugins in PostCSS.
+
+// autoprefixer
+a {
+  display: flex;
+}
+/* result */
+a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+// postcss-import
+
+/* foo.css */
+.foo {
+  width: 100px;
+}
+/* bar.css */
+.bar {
+  height: 20px;
+}
+/* index.css */
+@import 'foo.css';
+@import 'bar.css';
+/* result of index.css */
+.foo {
+  width: 100px;
+}
+.bar {
+  height: 20px;
+}
+
+// postcss-nesting
+a,
+b {
+  color: red;
+  & c,
+  & d {
+    color: white;
+  }
+  &:hover {
+    color: black;
+  }
+  @nest div > & {
+    color: blue;
+  }
+}
+/* result */
+a,
+b {
+  color: red;
+}
+a c,
+a d,
+b c,
+b d {
+  color: white;
+}
+a:hover,
+b:hover {
+  color: black;
+}
+div > a,
+div > b {
+  color: blue;
+}
+
+// postcss-assets
+/* with loadPath settings */
+body {
+  background: resolve('bg.png');
+}
+.warn {
+  width: width('warn.png'); /* calculate image size */
+  background: resolve('warn.png');
+}
+/* result */
+body {
+  background: url('/images/bg.png');
+}
+.warn {
+  width: 320px;
+  background: url('/images/template/warn.png');
+}
+```
+
+There are more than 100 plugins in PostCSS homepage, it could be much heavier than SCSS & SASS or tou just could use module.css form.
+So the Key Point is "Customizing Plugins in your way"
+
+###### Pros
+
+1. Various Plugins: You could add most of the features of CSS and CSS frameworks as a plugin, isn't it flexible?
+2. Module.css: As I mentioned before, you don't need to worry about making names of classes.
+3. Customizing: Add Plugins in your taste and build your CSS coding style.
+
+###### Cons
+
+1. Customizing: This is a double edge of blade, too many plugins cause low productivity.
+2. Support: There is potential for stopping support to certain plugin.
+
+## Tailwind.css
+
+Most recent and popular "Trend" in CSS world. Tailwind.css is a open source CSS framework, they provide fuction that user define css unit with className value<br/>
+Unlike the other CSS framework they do not tend to provide a series of predefined classes for elements such as buttons or tables.
+They have all of the CSS units with slightly different names. Yes, you need to learn them but it won't be too hard.
+
+```css
+// Usage
+<div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
+  <div className="shrink-0">
+    <img className="h-12 w-12" src="/img/logo.svg" alt="ChitChat Logo">
+  </div>
+  <div>
+    <div className="text-xl font-medium text-black">ChitChat</div>
+    <p className="text-slate-500">You have a new message!</p>
+  </div>
+</div>
+
+// Advanced Usage
+// Customize: You could customize most of the features color, animation, sizes etc in tailwind.config.js
+
+const colors = require('tailwindcss/colors');
+
+module.exports = {
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  theme: {
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      'white': '#ffffff',
+      'purple': '#3f3cbb',
+      'midnight': '#121063',
+      'metal': '#565584',
+      'tahiti': '#3ab7bf',
+      'silver': '#ecebff',
+      'bubble-gum': '#ff77e9',
+      'bermuda': '#78dcca',
+      'my-color': '#00FF7F',
+    },
+  },
+  plugins: [],
+};
+
+// Responsive Web
+// tailwind.css provide preset screen size breakpoints, you could customize them; also you just could use in className.
+// like "md:" "xs:"
+<div className="flex flex-col md:max-w-[864px] xs:max-w-4xl">
+    <MdxContent />
+</div>
+
+// Darkmode
+// Easy to setup Darkmode with "dark:" prefix.
+
+//setup in config file
+module.exports = {
+    darkMode: 'class',
+// ... other configs
+}
+
+// write dark: in className
+<div className="bg-white dark:bg-gray-800 text-black dark:text-white">
+<!-- contents -->
+</div>
+
+// It's a magic!!
+```
+
+###### Pros
+
+1. Time saving: It's incredibly saves us time, once you get use to do this.
+2. Presets: Responsive breakpoints, Darkmode, animations there are so many useful features provided.
+3. Easy to learn: Well-documented web-doc, low learning curve.
+
+###### Cons
+
+Readability: In my opinion, this is the A to Z disadvantage of Tailwind.css. For high position element easy to have more than 10 CSS units in one className.
+
+<br /> It is very hard to recognize each elements and components. Also bad for
+documentation when co-working with team members in one project.
+<br /> Solution could be study about folder structure and component structure if
+you are using React.
+
+## Overall Review
+
+CSS has diverse way to improve their performance nad I am highly considering each frameworks has suitable environment and purpose.
+For me, I'm gonna use Tailwind.css and PostCSS to my side project or small company project because of documentation.<br/>
+But if I'm working in a big Project with many of developers, I'm definitely going to use CSS preprocessor.
+Also This post reminds me studying basic of CSS and keep a close eye on updates is always important If you want to use them well.
