@@ -13,4 +13,52 @@ description: 'Distinction between 3 different CSS frameworks.'
 
 ###### Which one is the best CSS framework???
 
-I would like to share my experiences and viewpoints on three popular CSS frameworks in my post. I have used these frameworks in various personal projects, and below are their pros and cons:
+I would like to share my experiences and viewpoints on three popular CSS frameworks in my post that I have used. I have used these frameworks in various personal projects, and below are their pros and cons:
+
+## Pure CSS
+
+The pure CSS coding is not really "Hard" to use actually but the problem is it makes us to spend lots of time to organise html elements by name, improving maintainability and for high learning curve.
+
+<br />
+Yes, developers are could make powerful codes with pure CSS but if you think about
+the productivity and time management, pure CSS may seems not a good option.
+<br />
+Thus, I believe those reasons why developers make feel pure CSS is difficult to use.
+
+###### Pros
+
+1. Easy to learn: But until only basic of CSS
+2. Powerful: But only if you use like CSS "Master"
+3. Lightweight: Comparably Lightweighted and fast-rendered than other CSS frameworks.
+
+###### Cons
+
+1. Maintenance: If projects are big, codes has to be well-organised.(structure)
+2. Readability: We have naming rule the BEM but still not easy to learn than others.
+3. Reusability: Pure CSS files cannot share their units each other, we need to write many of basic units repeatedly.
+
+## SASS & SCSS
+
+SASS & SCSS are "CSS Preprocessor" they provide advanced maintainability and readability so devs could make powerful and well-organised CSS structure with these.
+
+<br />
+
+###### What is the difference between SASS and SCSS?
+
+Just grammers are different between them, examples below
+
+```sass
+.example
+        width: 100px
+        li
+           color: blue
+```
+
+```scss
+.example {
+  width: 100px;
+  li {
+    color: blue;
+  }
+}
+```
