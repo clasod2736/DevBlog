@@ -6,4 +6,5 @@ html {
   height: auto;
   overflow-y: auto;
   background-color: #f9f9f9;
+  scroll-behavior: smooth;
 }
