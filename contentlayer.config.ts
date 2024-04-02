@@ -27,7 +27,7 @@ export const Post = defineDocumentType(() => ({
     headings: {
       type: 'json',
       resolve: async (doc) => {
-        const regXHeader = /\n(?<flag>#{1,6})\s+(?<content>.+)/g;
+        const regXHeader = /\n(?<flag>#{2, 3})\s+(?<content>.+)/g;
         const slugger = new GithubSlugger();
         const headings = Array.from(doc.body.raw.matchAll(regXHeader)).map(
           ({ groups }) => {
@@ -60,10 +60,6 @@ export default makeSource({
   documentTypes: [Post],
   mdx: {
     remarkPlugins: [remarkGfm],
-    rehypePlugins: [
-      [rehypePrettyCode, options],
-      [rehypeSlug],
-      // [rehypeImgSize, { dir: 'public' }],
-    ],
+    rehypePlugins: [[rehypePrettyCode, options], [rehypeSlug]],
   },
 });

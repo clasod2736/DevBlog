@@ -1,0 +1,299 @@
+---
+title: 7 Common Mistakes of React beginners
+category: React
+tag: none
+date: 2024-02-11
+featured: false
+image: none
+articleType: post
+description: 'Trying to get out from React beginner stage?'
+---
+
+# 7 Mistakes of React beginners.
+
+### Intro
+
+> I remember the time when I learned React first time, back then I was just beginner who just learn basic of javascript with finished a simple todo list.  
+> All the concepts of components, state, lifecycle and SPA are was "HUGE" to me I didn't know what I was doing with React while working on my frist side project. All I know is just make useState and setState with event handlers, and set useEffect with just pluging the hole name is "Infinite Loop".  
+> Now I more understand what React does - when something happening on the screen(rendering components that I've made haha) such as Lifecycle, Virtual DOM, Fiber and etc.  
+> After gaining a better understanding of React's fundamentals, then I could understand why I need to seek and study not just about making components with useState and useEffect, what are the strengths of SPA? and what do I need to care about for improving them?  
+> This post starts from that point. I believe there are tons of way to do this, but I start from basics :)
+
+## List of mistakes
+
+1. Not generating "key props".
+2. Inefficient folder structure.
+3. Return null for components you don't want to render.
+4. useEffect and dependency array.
+5. Accessing state after changing it.
+6. Memory leak by EventListener.
+7. A fatty component.
+
+## 1. Not generating "key props".
+
+<code>Warning: Each child in a list should have a unique "key" prop.</code>
+
+When we are implement <code>map</code> method for rendering lists we need to set "key" prop like below
+
+```javascript
+function ShoppingList({ items }) {
+  return (
+    <ul>
+      {items.map((item, "unique id") => {
+        return <li key={unique id}>{item}</li>;
+      })}
+    </ul>
+  );
+}
+```
+
+#### Why?
+
+> React identify list elements with "Key" value, if we haven't set key props and order of lists is changed.
+> Then React re-rendering whole list from the scratch with high potential, but if you set key props React will update only needed lists.
+> It affects to performance. If you want to browse what is happening under the hood ,<br/> Go to this <a>https://react.dev/learn/rendering-lists</a>
+
+#### Wrapping up!
+
+- Key props must be stable, predictable, and unique.
+- Key props are just need to be unique inside of a node.
+
+---
+
+## 2. Inefficient folder structure.
+
+<img
+  src="https://res.cloudinary.com/practicaldev/image/fetch/s--4IRIh2Lq--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gbd0g28wobkaprband5h.jpg"
+  alt="FolderStructure"
+/>
+<br />
+The image is general case of folder structure in React.
+<br />
+
+- components: organizing all the components in each folder(my style is organizing by folder with pages name.)
+- assets: images, svg, videos are in it.
+- constants: some datas you want to export for rendering in your components.
+- pages: page names.
+- hooks: for custom hooks.
+- store: for Redux
+- styles: CSS files.
+- types: types if you're using Typescript
+- services: logical functions or utils.
+- api: HTTP request
+  {' '}
+  <br />
+  <br />
+  and more...
+
+#### Why?
+
+Imagine, you've coded 100 components, pages, APIs, utils etc...and you created one folder "components" and put everything in it.<br/>
+Then if you need to find some of random components or working with collaborators and it will be a problem.<br/>
+Key points are scalability and maintainability, if your team has a good communication with folder strutures it could improve team performance.
+
+#### Wrapping up!
+
+- In terms of documentation, it is very basic way to improve your documentaion skill.
+- Just remind when any type of file you create, think about purpose, usage, how readable it is.
+
+## 3. Return null for components you don't want to render.
+
+```javascript
+function ListComponent({ items }) {
+  if (items.length === 0) {
+    return null;
+  }
+  return (
+    <>
+      {items.map((item) => (
+        <li key={item.id}>{item.name}</li>
+      ))}
+    </>
+  );
+}
+```
+
+<code>return null;</code> means you don't want to render anything, thus React won't
+render children components as well. It is handy when you want to render specific
+component conditionally, like upon image.
+
+#### Why?
+
+In my case, before I just added <code>style={{display: "none"}}</code> in corresponding component, but in this case corresponding components or elements actually rendered but just not appearing on the screen.<br/>
+This is not React-like behavior also not readable and cause low performance.
+
+#### Wrapping up!
+
+- Also you could wrapp up whole component with <code><></></code> you don't want to add more html element in the DOM.
+
+## 4. useEffect and dependency array.
+
+<code>
+  React Hook useEffect has a missing dependency: "???". Either include it or
+  remove the dependency array react-hooks/exhaustive-deps
+</code>
+
+useEffect hook is set side-effects inside of components by a condition of dependency array.
+
+```javascript
+useEffect(() => {
+  console.log('hello world!');
+}, []);
+```
+
+Like upon codes if you set empty array as a dependency this useEffect will execute just once when component mounted.
+
+```javascript
+useEffect(() => {
+  setState(true);
+}, [state]);
+```
+
+And in this case, useEffect will activate only when state is changed.
+
+```javascript
+useEffect(() => {
+  setState(true);
+}, []);
+```
+
+<code>React Hook useEffect has a missing dependency: "???"</code>
+The error that I show you at below title come up with this.
+
+#### Why?
+
+Setting empty dependency aray means you have uncontrollable side-effects trigger in useEffect.
+Some of the case will be okay and other may not, but at least we need to know which dependency cause errors.
+
+#### Wrapping up!
+
+- Be cautious to set too many of dependency in useEffect hook, it cause hard to handle and low performance.
+- If you don't even put empty array, useEffect hook wil excute on every rendering and it is not good for performance.
+
+## 5. Accessing state after changing it.
+
+useState hook working asynchronously, see below codes.
+
+```javascript
+incrementCount() {
+  // wrong code.
+  this.setState({count: this.state.count + 1});
+}
+
+// expection value is 3, but result is 1.
+handleSomething() {
+  this.incrementCount();
+  this.incrementCount();
+  this.incrementCount();
+}
+```
+
+#### Why?
+
+if state is called in one event handler, update every state when after finished evet at once.
+
+#### Wrapping up!
+
+Do not make mistake like put console.log() and setState() inside of same functions anymore!
+
+## 6. Memory leak by EventListener.
+
+If you implementing EventListener function with useEffect in component, must remove that EventListener in <code>return () => {}</code> in same useEffect.
+see below code.
+
+```javascript
+// This custom hook using Eventlistener for getting screen size
+export const useScroll = () => {
+  const [state, setState] = useState < number > 0;
+  const onScroll = () => {
+    setState(window.scrollY);
+  };
+  useEffect(() => {
+    // add Eventlistener
+    window.addEventListener('scroll', onScroll);
+
+    // remove Eventlistener
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  return state;
+};
+```
+
+#### Why?
+
+Once render component with above custom hook, only EventListener keep only stacking in memory without removing.  
+Then many EventListener doing same thing in same period when component redering and Ended up using unnecessary memory.
+
+#### Wrapping up!
+
+It is about memory problem, just don't forget clean up EventListener!.
+
+## 7. A fatty component.
+
+Fatty components, it means component that generating or implementing too many logics or features or datas.<br/>
+See below codes.
+
+```javascript
+const TodosPage = () => {
+  const [todos, setTodos] = useState([]);
+
+  // 1. Fetching data from API.
+  useEffect(() => {
+    async function getTodos() {
+      const { data } = await axios.get(
+        'https://jsonplaceholder.typicode.com/todos/'
+      );
+      const firstTen = data.slice(0, 10);
+      setTodos(firstTen);
+    }
+    getTodos();
+  }, []);
+
+  // 2. Converting todo array into list of React elements.
+  const renderTodos = () => {
+    return todos.map((todo) => {
+      return <li>{`ID: ${todo.id}, Title: ${todo.title}`}</li>;
+    });
+  };
+
+  // 3. Structuring and displaying the todos.
+  return (
+    <div>
+      <h1>My Todos:</h1>
+      <ul>{renderTodos()}</ul>
+    </div>
+  );
+};
+```
+
+Let's think about how many works on above component.
+
+1. feching <code>todos</code> with API.
+2. Generating lists with fetched <code>todos</code>
+3. Showing lists to user.
+
+I assume this component should only care about showing datas to user, too many logics in one component.  
+For me, I would separate API in other folder and re-sedign that could be re-usable.  
+Then make higher order component above this TodosPage component, set renderTodos function in there, passing datas with props to child component<br/>
+and just remain the part of codes that showing datas in corresponding component.
+
+#### Why?
+
+If components too heavy or complex, it's hard to maintain and document also cause unnecessary re-rendering beacuse HOC getting fat as well.  
+Besides it will make harder to code the tests.
+
+#### Wrapping up!
+
+The importance about splitting heavy component is mentioned in "S" of SOLID principle as well, which is "Single Responsiility Principle".  
+Modulization of React components, set just one function or logic for each component and organize by your coding strategy or folder structure and etc.
+
+## Summarization
+
+I wrote about 7 mistakes of React beginners and I experienced those cases in my project with lots of errors haha
+But eventually it helped to understand the nature of React, my application became more lean and flexible.
+Hope this post could help somone like me studying React in beginner steps.
+
+<br />
+<br />
+
+If you want to chat about this post please email me <a href="mailto:claosd2736@gmail.com">clasod2736@gmail.com</a>
