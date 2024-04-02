@@ -32,11 +32,11 @@ export default function OnThisPage(props: Props) {
   };
 
   return (
-    <section className="md:sticky top-40 mt-24 min-w-[240px] h-[30%] font-light">
-      <p className="text-lg my-4 text-zinc-500 dark:text-zinc-400">
+    <section className="md:sticky top-40 mt-24 min-w-[240px] h-[30%] max-h-[400px] font-light">
+      <p className="text-xl my-4 text-zinc-500 dark:text-zinc-400">
         On This Page
       </p>
-      <div className="text-sm border-b-[1px] border-b-zinc-500">
+      <div className="text-base border-b-[1px] border-b-zinc-500">
         {handleHeadings()}
       </div>
       <div className="flex flex-col items-end mt-5 text-sm gap-2">

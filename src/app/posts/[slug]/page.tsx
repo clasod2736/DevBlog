@@ -12,12 +12,13 @@ type Props = {
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
-    slug: post._raw.flattenedPath,
+    slug: post.title,
   }));
 }
 
 export async function generateMetadata({ params: { slug } }: Props) {
   const postData = await getPostData(decodeURIComponent(slug));
+  // console.log(postData);
   return {
     title: postData.title,
     description: postData.description,
@@ -34,10 +35,10 @@ export default async function page({ params: { slug } }: Props) {
   const decodedSlug = decodeURIComponent(slug);
 
   const compiledPosts = posts.map((post, idx) => (
-    <PostRenderer key={idx} {...post} />
+    <PostRenderer key={post._id} {...post} />
   ));
   const filteredPosts = compiledPosts.filter((post) => {
-    return post.props._raw.flattenedPath === decodedSlug;
+    return post.props.title === decodedSlug;
   });
 
   return (

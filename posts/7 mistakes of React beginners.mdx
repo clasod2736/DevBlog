@@ -11,13 +11,16 @@ description: 'Trying to get out from React beginner stage?'
 
 # 7 Common Mistakes of React beginners.
 
-### Intro
+{/* <p className="text-2xl">Intro</p> */}
 
-> I remember the time when I learned React first time, back then I was just beginner who just learn basic of javascript with finished a simple todo list.  
-> All the concepts of components, state, lifecycle and SPA are was "HUGE" to me I didn't know what I was doing with React while working on my frist side project. All I know is just make useState and setState with event handlers, and set useEffect with just pluging the hole name is "Infinite Loop".  
-> Now I more understand what React does - when something happening on the screen(rendering components that I've made haha) such as Lifecycle, Virtual DOM, Fiber and etc.  
+<div className='text-2xl'>
+> I remember the time when I learned React first time, back then I was just beginner who just learn basic of javascript with finished a simple todo list. <br/>   
+> All the concepts of components, state, lifecycle and SPA are was "HUGE" to me I didn't know what I was doing with React while working on my frist side project. All I know is just make useState and setState with event handlers, and set useEffect with just pluging the hole name is "Infinite Loop".<br/>
+> Now I more understand what React does - when something happening on the screen(rendering components that I've made haha) such as Lifecycle, Virtual DOM, Fiber and etc.<br/>    
 > After gaining a better understanding of React's fundamentals, then I could understand why I need to seek and study not just about making components with useState and useEffect, what are the strengths of SPA? and what do I need to care about for improving them?  
 > This post starts from that point. I believe there are tons of way to do this, but I start from basics :)
+
+</div>
 
 ## List of mistakes
 
@@ -58,17 +61,15 @@ function ShoppingList({ items }) {
 - Key props must be stable, predictable, and unique.
 - Key props are just need to be unique inside of a node.
 
----
-
 ## 2. Inefficient folder structure.
 
 <img
   src="https://res.cloudinary.com/practicaldev/image/fetch/s--4IRIh2Lq--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gbd0g28wobkaprband5h.jpg"
   alt="FolderStructure"
+  width={'250px'}
+  height={'600px'}
 />
-<br />
 The image is general case of folder structure in React.
-<br />
 
 - components: organizing all the components in each folder(my style is organizing by folder with pages name.)
 - assets: images, svg, videos are in it.
@@ -81,7 +82,6 @@ The image is general case of folder structure in React.
 - services: logical functions or utils.
 - api: HTTP request
   {' '}
-  <br />
   <br />
   and more...
 
@@ -119,7 +119,7 @@ component conditionally, like upon image.
 
 #### Why?
 
-In my case, before I just added <code>style={{display: "none"}}</code> in corresponding component, but in this case corresponding components or elements actually rendered but just not appearing on the screen.<br/>
+In my case, before I just added display: "none" style attribute in corresponding component, but in this case corresponding components or elements actually rendered but just not appearing on the screen.<br/>
 This is not React-like behavior also not readable and cause low performance.
 
 #### Wrapping up!
@@ -128,10 +128,8 @@ This is not React-like behavior also not readable and cause low performance.
 
 ## 4. useEffect and dependency array.
 
-<code>
-  React Hook useEffect has a missing dependency: "???". Either include it or
-  remove the dependency array react-hooks/exhaustive-deps
-</code>
+> React Hook useEffect has a missing dependency: "???". Either include it or
+> remove the dependency array react-hooks/exhaustive-deps
 
 useEffect hook is set side-effects inside of components by a condition of dependency array.
 
