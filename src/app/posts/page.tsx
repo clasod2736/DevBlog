@@ -16,6 +16,8 @@ export default async function page() {
   const categories = await getCategory();
   const totalPostNumb = await getTotalPostNumb();
 
+  console.log(posts.length);
+
   return (
     <section className="h-5/6 w-full">
       <Header />
