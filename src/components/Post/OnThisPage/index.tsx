@@ -36,7 +36,7 @@ export default function OnThisPage(props: Props) {
       <p className="text-xl my-4 text-zinc-500 dark:text-zinc-400">
         On This Page
       </p>
-      <div className="text-base border-b-[1px] border-b-zinc-500">
+      <div className="text-sm border-b-[1px] border-b-zinc-500">
         {handleHeadings()}
       </div>
       <div className="flex flex-col items-end mt-5 text-sm gap-2">

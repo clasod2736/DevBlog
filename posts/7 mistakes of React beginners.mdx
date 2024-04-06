@@ -11,9 +11,7 @@ description: 'Trying to get out from React beginner stage?'
 
 # 7 Common Mistakes of React beginners.
 
-{/* <p className="text-2xl">Intro</p> */}
-
-<div className='text-2xl'>
+<div className='text-xl'>
 > I remember the time when I learned React first time, back then I was just beginner who just learn basic of javascript with finished a simple todo list. <br/>   
 > All the concepts of components, state, lifecycle and SPA are was "HUGE" to me I didn't know what I was doing with React while working on my frist side project. All I know is just make useState and setState with event handlers, and set useEffect with just pluging the hole name is "Infinite Loop".<br/>
 > Now I more understand what React does - when something happening on the screen(rendering components that I've made haha) such as Lifecycle, Virtual DOM, Fiber and etc.<br/>    
@@ -56,7 +54,7 @@ function ShoppingList({ items }) {
 > Then React re-rendering whole list from the scratch with high potential, but if you set key props React will update only needed lists.
 > It affects to performance. If you want to browse what is happening under the hood ,<br/> Go to this <a>https://react.dev/learn/rendering-lists</a>
 
-#### Wrapping up!
+#### Wrapping up!✨
 
 - Key props must be stable, predictable, and unique.
 - Key props are just need to be unique inside of a node.
@@ -87,11 +85,11 @@ The image is general case of folder structure in React.
 
 #### Why?
 
-Imagine, you've coded 100 components, pages, APIs, utils etc...and you created one folder "components" and put everything in it.<br/>
-Then if you need to find some of random components or working with collaborators and it will be a problem.<br/>
-Key points are scalability and maintainability, if your team has a good communication with folder strutures it could improve team performance.
+> Imagine, you've coded 100 components, pages, APIs, utils etc...and you created one folder "components" and put everything in it.<br/>
+> Then if you need to find some of random components or working with collaborators and it will be a problem.<br/>
+> Key points are scalability and maintainability, if your team has a good communication with folder strutures it could improve team performance.
 
-#### Wrapping up!
+#### Wrapping up!✨
 
 - In terms of documentation, it is very basic way to improve your documentaion skill.
 - Just remind when any type of file you create, think about purpose, usage, how readable it is.
@@ -119,10 +117,10 @@ component conditionally, like upon image.
 
 #### Why?
 
-In my case, before I just added display: "none" style attribute in corresponding component, but in this case corresponding components or elements actually rendered but just not appearing on the screen.<br/>
-This is not React-like behavior also not readable and cause low performance.
+> In my case, before I just added display: "none" style attribute in corresponding component, but in this case corresponding components or elements actually rendered but just not appearing on the screen.<br/>
+> This is not React-like behavior also not readable and cause low performance.
 
-#### Wrapping up!
+#### Wrapping up!✨
 
 - Also you could wrapp up whole component with <code><></></code> you don't want to add more html element in the DOM.
 
@@ -160,10 +158,10 @@ The error that I show you at below title come up with this.
 
 #### Why?
 
-Setting empty dependency aray means you have uncontrollable side-effects trigger in useEffect.
-Some of the case will be okay and other may not, but at least we need to know which dependency cause errors.
+> Setting empty dependency aray means you have uncontrollable side-effects trigger in useEffect.
+> Some of the case will be okay and other may not, but at least we need to know which dependency cause errors.
 
-#### Wrapping up!
+#### Wrapping up!✨
 
 - Be cautious to set too many of dependency in useEffect hook, it cause hard to handle and low performance.
 - If you don't even put empty array, useEffect hook wil excute on every rendering and it is not good for performance.
@@ -188,11 +186,11 @@ handleSomething() {
 
 #### Why?
 
-if state is called in one event handler, update every state when after finished evet at once.
+> if state is called in one event handler, update every state when after finished evet at once.
 
-#### Wrapping up!
+#### Wrapping up!✨
 
-Do not make mistake like put console.log() and setState() inside of same functions anymore!
+- Do not make mistake like put console.log() and setState() inside of same functions anymore!
 
 ## 6. Memory leak by EventListener.
 
@@ -219,12 +217,12 @@ export const useScroll = () => {
 
 #### Why?
 
-Once render component with above custom hook, only EventListener keep only stacking in memory without removing.  
-Then many EventListener doing same thing in same period when component redering and Ended up using unnecessary memory.
+> Once render component with above custom hook, only EventListener keep only stacking in memory without removing.  
+> Then many EventListener doing same thing in same period when component redering and Ended up using unnecessary memory.
 
-#### Wrapping up!
+#### Wrapping up!✨
 
-It is about memory problem, just don't forget clean up EventListener!.
+- It is about memory problem, just don't forget clean up EventListener!.
 
 ## 7. A fatty component.
 
@@ -277,13 +275,13 @@ and just remain the part of codes that showing datas in corresponding component.
 
 #### Why?
 
-If components too heavy or complex, it's hard to maintain and document also cause unnecessary re-rendering beacuse HOC getting fat as well.  
-Besides it will make harder to code the tests.
+> If components too heavy or complex, it's hard to maintain and document also cause unnecessary re-rendering beacuse HOC getting fat as well.  
+> Besides it will make harder to code the tests.
 
-#### Wrapping up!
+#### Wrapping up!✨
 
-The importance about splitting heavy component is mentioned in "S" of SOLID principle as well, which is "Single Responsiility Principle".  
-Modulization of React components, set just one function or logic for each component and organize by your coding strategy or folder structure and etc.
+- The importance about splitting heavy component is mentioned in "S" of SOLID principle as well, which is "Single Responsiility Principle".
+- Modulization of React components, set just one function or logic for each component and organize by your coding strategy or folder structure and etc.
 
 ## Summarization
 
