@@ -37,7 +37,7 @@ export default async function RootLayout({
       </head>
       <body className="flex flex-row w-full h-screen justify-center items-start dark:bg-zinc-900 text-zinc-800 dark:text-zinc-300 scroll-smooth">
         <section className="flex flex-col justify-start items-center h-auto w-full px-6 dark:bg-zinc-900">
-          <main className="w-full max-w-5xl">
+          <main className="w-full max-w-6xl">
             <ThemeProvider>
               <NavBar />
               <section className="w-full">
