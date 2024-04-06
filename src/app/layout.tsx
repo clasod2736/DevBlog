@@ -1,13 +1,16 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Source_Sans_3 } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 import NavBar from '../components/Home/NavBar';
 import Footer from '../components/Home/Footer';
 import ThemeProvider from '../provider/ThemeProvider';
 import NextTopLoader from 'nextjs-toploader';
 
 //google font
-const figTree = Source_Sans_3({ subsets: ['latin'] });
+const roboto = Roboto({
+  weight: '500',
+  subsets: ['latin'],
+});
 
 //Metadata
 export const metadata: Metadata = {
@@ -28,13 +31,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className={`dark:bg-zinc-900 ${figTree.className}`}>
+    <html className={`dark:bg-zinc-900 ${roboto.className}`}>
       <head>
         <link rel="icon" href="/images/favicon.png" />
       </head>
       <body className="flex flex-row w-full h-screen justify-center items-start dark:bg-zinc-900 text-zinc-800 dark:text-zinc-300 scroll-smooth">
         <section className="flex flex-col justify-start items-center h-auto w-full px-6 dark:bg-zinc-900">
-          <main className="w-full max-w-6xl">
+          <main className="w-full max-w-5xl">
             <ThemeProvider>
               <NavBar />
               <section className="w-full">
