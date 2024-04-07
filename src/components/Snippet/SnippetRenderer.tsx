@@ -17,7 +17,7 @@ export default function PostRenderer(post: Post) {
         <div className="lg:flex lg:flex-row xs:hidden lg:w-1/2 min-w-32 pl-12 transition-all">
           <OnThisPage headings={post.headings} />
         </div>
-        <div className="flex flex-col md:max-w-3xl xs:max-w-4xl">
+        <div className="flex flex-col md:max-w-3xl xs:max-w-4xl text-lg">
           <MdxContent />
         </div>
       </section>

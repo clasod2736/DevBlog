@@ -8,3 +8,7 @@ html {
   background-color: #f9f9f9;
   scroll-behavior: smooth;
 }
+
+* {
+  border-color: #303036;
+}

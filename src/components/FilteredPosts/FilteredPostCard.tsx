@@ -9,7 +9,7 @@ import { getReadingTime } from '@/util/getReadingTime';
 type Props = { post: Post };
 
 export default function FilteredPostCard({ post }: Props) {
-  const parsedDate = format(parseISO(post.date), 'LLLL d, yyyy');
+  const parsedDate = format(parseISO(post.date), 'LLLL dd, yyyy');
   const time = getReadingTime({ post: post });
   return (
     <Link

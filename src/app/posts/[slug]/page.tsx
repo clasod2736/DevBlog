@@ -34,7 +34,7 @@ export default async function page({ params: { slug } }: Props) {
   const posts = allPosts;
   const decodedSlug = decodeURIComponent(slug);
 
-  const compiledPosts = posts.map((post, idx) => (
+  const compiledPosts = posts.map((post) => (
     <PostRenderer key={post._id} {...post} />
   ));
   const filteredPosts = compiledPosts.filter((post) => {
@@ -42,7 +42,7 @@ export default async function page({ params: { slug } }: Props) {
   });
 
   return (
-    <section className="h-auto w-full max-w-full mt-8 prose prose-stone prose-lg dark:prose-dark animate-fadeIn scroll-smooth">
+    <section className="h-auto w-full max-w-full mt-8 prose prose-stone prose-base prose-p:my-2 prose-blockquote:my-4 prose-h2:text-4xl prose-h4:text-3xl dark:prose-dark animate-fadeIn scroll-smooth">
       {filteredPosts.length > 0
         ? filteredPosts.map((post) => post)
         : notFound()}

@@ -16,7 +16,7 @@ export default function About() {
       </section>
       <Link
         href={'/about'}
-        className="text-xl text-stone-400 hover:text-stone-700 transition-all ease-in-out font-medium animate-slideToRight"
+        className="text-xl text-stone-400 hover:text-stone-700 dark:hover:text-stone-300 transition-all ease-in-out font-medium animate-slideToRight"
       >
         More About Me →
       </Link>

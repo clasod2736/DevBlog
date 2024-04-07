@@ -10,7 +10,7 @@ type Props = {
 export default function PrevPost(prev: Props) {
   if (prev.prev === null) {
     return (
-      <p className="text-xl font-semibold underline underline-offset-2 animate-pulse">
+      <p className="text-xl font-semibold underline underline-offset-2 animate-pulse my-0">
         This is the Newest Post.
       </p>
     );
@@ -18,7 +18,7 @@ export default function PrevPost(prev: Props) {
     return (
       <Link
         href={`/posts/${prev.prev?.title}`}
-        className="xs:bg-zinc-700 sm:bg-transparent flex flex-wrap justify-start items-center text-center w-auto h-5/6 no-underline hover:bg-zinc-200 dark:hover:bg-zinc-700 text-xl font-semibold rounded-md p-2 gap-1"
+        className="xs:dark:bg-zinc-800 xs:bg-zinc-200 flex flex-wrap justify-start items-center text-center w-auto h-5/6 no-underline hover:bg-zinc-300 dark:hover:bg-zinc-700 text-xl font-semibold rounded-md p-2 gap-1 my-2"
       >
         <p className="m-1">Previous Post:</p>
         <p className="m-1">[ {prev.prev?.title} ]</p>

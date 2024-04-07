@@ -3,7 +3,7 @@ import { getReadingTime } from '@/util/getReadingTime';
 import { type Post } from 'contentlayer/generated';
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from '@/CSS/PostCard.module.css';
+import styles from '@/styles/PostCard.module.css';
 import { format, parseISO } from 'date-fns';
 
 import { MdOutlineDateRange } from 'react-icons/md';
@@ -11,7 +11,7 @@ import { MdOutlineDateRange } from 'react-icons/md';
 type Props = { post: Post };
 
 export default async function PostCard({ post }: Props) {
-  const parsedDate = format(parseISO(post.date), 'LLLL d, yyyy');
+  const parsedDate = format(parseISO(post.date), 'LLLL dd, yyyy');
   const time = getReadingTime({
     post: post,
   });

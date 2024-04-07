@@ -1,0 +1,9 @@
+.mdxContainer {
+  display: flex;
+  flex-direction: column;
+
+  font-size: 1.125rem;
+
+  border-bottom: 2px;
+  padding-block: 1.5rem;
+}
