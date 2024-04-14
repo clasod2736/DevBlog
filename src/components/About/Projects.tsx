@@ -26,7 +26,7 @@ export default function Projects() {
               Code ▸
             </Link>
             <Link
-              href={'https://main--voluble-kashata-776f36.netlify.app'}
+              href={'https://voluble-kashata-776f36.netlify.app'}
               className=" animate-pulse animation-delay-75 hover:animate-none hover:translate-x-2 transition-all"
             >
               Explore ▸
