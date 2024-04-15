@@ -10,8 +10,8 @@ export default function About() {
           Self-Taught Web developer.
         </p>
         <div className="flex flex-col justify-evenly gap-1 my-3">
-          <p>Passionate for simplifying complex tasks into lean solutions.</p>
-          <p>React.js / Typescript / Next.js / Node.js / Jest</p>
+          <p>Passionate for simplifying complex tasks with lean solutions.</p>
+          <p>React.js / Typescript / Next.js / Node.js / AWS / Jest</p>
         </div>
       </section>
       <Link

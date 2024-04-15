@@ -42,8 +42,10 @@ export default function Projects() {
           <ul className="text-lg mt-2">
             <li>- My own Dev Blog powered by Next.js.</li>
             <li>- Firmly understanding Concepts of SSR.</li>
-            <li>- Unit test with jest and react-testing-library.</li>
-            <li>- Next.js / Typescript / Tailwind.css / MDX / Jest</li>
+            <li>- Implemented a CD pipeline with GitHub Actions</li>
+            <li>
+              - Next.js / Typescript / Tailwind.css / SEO / Github Actions
+            </li>
           </ul>
           <div className=" mt-3 flex flex-row font-bold text-xl gap-10">
             <Link
@@ -54,6 +56,32 @@ export default function Projects() {
             </Link>
             <Link
               href={'https://joondev.blog'}
+              className=" animate-pulse animation-delay-75 hover:animate-none hover:translate-x-2 transition-all"
+            >
+              Explore ▸
+            </Link>
+          </div>
+        </div>
+      </article>
+      <article className="flex flex-col mt-2 py-4 border-zinc-500">
+        <div>
+          <h4 className="text-2xl font-bold text-zinc-700 dark:text-zinc-400">
+            Portfolio website✨
+          </h4>
+          <ul className="text-lg mt-2">
+            <li>- Present my backgorunds, skills, projects.</li>
+            <li>- Unit test with jest and react-testing-library.</li>
+            <li>- React.js / Typescript / Tailwind.css / Jest / Vite</li>
+          </ul>
+          <div className=" mt-3 flex flex-row font-bold text-xl gap-10">
+            <Link
+              className=" animate-pulse hover:animate-none hover:translate-x-2 transition-all"
+              href="https://github.com/clasod2736/portfolio"
+            >
+              Code ▸
+            </Link>
+            <Link
+              href={'https://joondev.me'}
               className=" animate-pulse animation-delay-75 hover:animate-none hover:translate-x-2 transition-all"
             >
               Explore ▸

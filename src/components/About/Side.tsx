@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
+import { TbWorld } from 'react-icons/tb';
 
 export default function Side() {
   return (
@@ -40,6 +41,15 @@ export default function Side() {
               href="https://github.com/clasod2736"
             >
               Github Proflie
+            </a>
+          </li>
+          <li className="flex flex-row items-center gap-2">
+            <TbWorld size={25} />
+            <a
+              className="hover:underline underline-offset-2"
+              href="https://joondev.me"
+            >
+              Portfolio website
             </a>
           </li>
         </ul>

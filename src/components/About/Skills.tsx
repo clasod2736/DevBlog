@@ -14,6 +14,7 @@ export default function Skills() {
           <li>PostCSS</li>
           <li>Tailwind</li>
           <li>AWS</li>
+          <li>Jest</li>
           <p className=" text-[1rem] text-end">and more...</p>
         </ul>
       </div>
