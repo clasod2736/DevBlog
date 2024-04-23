@@ -1,0 +1,41 @@
+---
+title: useLayoutEffect
+category: none
+tag: React
+date: 2024-04-02
+featured: false
+image: none
+articleType: snippet
+description: none
+---
+
+import A from '../src/html/TagA';
+
+## useLayoutEffect
+
+> I've found this Interesting hook from the book{" "} <A link={"https://www.advanced-react.com/"} str={"Advanced React"}/> by Nadia Makarevich.
+> With this hook, we could set side-effect <u>"before"</u> component rendering, it is contrast with "useEffect" hook because useEffect activate their side-effect <u>"after"</u> rendering.
+>
+> useEffect runs after the components render and paint. In other words, it runs asynchronously after the DOM is drawn, and then re-renders based on the state.
+> Therefore, if there is code inside useEffect that affects the DOM, users may experience screen flickering.
+
+### Code
+
+```javascript
+
+useLayoutEffect(() => {
+  // do side effects
+  return () => /* cleanup */
+}, [dependancy array]);
+
+```
+
+According to the <A link={"https://react.dev/reference/react/useLayoutEffect"} str={"Official Document"}/>, it's recommended to use useEffect whenever possible, as useLayoutEffect can potentially degrade performance. For instance, if the logic inside useLayoutEffect is too complex, it may take a long time for users to see the layout. Therefore, it's preferable to use useLayoutEffect only when there's a need for rendering differently on the first paint, depending on conditions.
+
+Furthermore, in the case of server-side rendering, neither useLayoutEffect nor useEffect will execute until all JavaScript has been downloaded!
+
+---
+
+### Conclusion
+
+Therefore, if the state to be rendered needs to be initialized within the effect, let's utilize useLayoutEffect for a better user experience!

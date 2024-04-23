@@ -1,0 +1,179 @@
+---
+title: JWT Authentication
+category: Authentication
+tag: none
+date: 2024-04-16
+featured: true
+image: /images/featured4.jpg
+articleType: post
+description: 'Utilising JWT token for user authentication in MERN stack project.'
+---
+
+# JWT Authentication
+
+> Usual authentication system alongside Cookies & Sessions.<br/>
+> I've utilised them in my personel project built with MERN stack.
+> In this post, focused on basic knowledge of JWT and how to implement in React and Node.js environment.
+
+### Why did I use them?
+
+> It is simple, scalable, light to use than cookies & session authentication - this is ususal reason why using JWT,<br/>
+> Bur in my case I couldn't implement Cookies & Session, because I deployed my server-side app on heroku.<br/>
+> And in heroku, not allow to send cross domain cookies with "herokuapp.com" domain, becuase that domain is included in the Mozilla Foundation’s Public Suffix List.<br/>
+>
+> For this problem, I can fix this either buying custom domain, or set proxy server, but still get some cookie errors randomly.<br/>
+> So decided to implement JWT authentication with DB for this project, <span style={{color:"darkgoldenrod"}} ><u>focused on how auth users with JWT and usages.</u></span>
+> Later, I am willing to implement Cookies & Session authentication in other deployment platform.
+
+## Structure of JWT
+
+- Header: The header typically consists of two parts: the type of the token, which is JWT, and the algorithm that is used, such as HMAC SHA256 or RSA SHA256.
+  <br />
+- Payload: The payload contains the three types of claims, registered claims, custom claims, subject claims.
+
+          - Registered claims:
+                          1. iss(issuer)
+                          2. sub(subject)
+                          3. aud(audience)
+                          4. exp(expiration)
+                          5. nbf(not before)
+                          6. iat(issued at)
+                          7. jti(jwt id)
+                            <br/>
+          - Custom claims: For sharing private informtaion<br/><br/>
+          - Subject claims: Typically, the subject claim is used to create the OpenID Connect user subject. However, the Liberty JVM server can be configured to use an alternative claim.
+
+  <br />
+
+- Signature: To create the signature part, the encoded header and encoded payload are signed by using the signature algorithm from the header. The signature is used to verify that the issuer of the JWT is who it says it is and to ensure that the message wasn't changed along the way.
+
+## Strengths and Weaknesses
+
+##### 1. Strength
+
+- Stateless: lightweighted, reduce server's tasks and Includes information inside of token itself, no need to save or load information in other space.
+- Security: create signature with header and payload, hard to mutate datas in the token.
+- Scalability: easy to access to other authentication system that JWT token based(facebook, google)
+
+##### 2. Weaknesses
+
+- Size: the length of encrypted data is comparably long, as more request cause more risk on server.
+- Maintainability: once you generate tokens, can't delete or de-activate.<br/>
+  {' '}
+  <span style={{ color: 'darkgoldenrod' }}>
+    <u>Solution: using Access Token and Refresh Token.</u>
+  </span>
+
+## Access and Refresh Token?
+
+> The way of prevent to take user information from token, generating two different tokens, give short expiry time to access token (from a few min to a few hour) and give long expiry time to refresh Token.
+> And when auth user, check access token first, if access token is expired, check refresh token.
+> If refresh token is still valid, generate new access token. If both tokens are not valid, user need to login.
+> Therefore, prevent if someone take out the user information from the acceess token, cannot holding that long time.
+
+#### Steps
+
+1. When user login generate Access Token and Refresh Token on client side and save only refreshtoken in the DB.
+2. When user access to webstie check access token exist or expired in client side.
+3. If not, check refresh token.
+4. If refresh token is valid, compare the payload with refresh token in DB.
+5. If refresh token is matched with DB's one, make user states to loggin, generate new access token and send to the client side.
+6. If both tokens are not valid or exist on the client side, keep user log out.
+
+## Codes
+
+#### - Create tokens
+
+```javascript
+//create both tokens when user login.
+
+const postAccessToken = (userData) => {
+  try {
+    const token = jwt.sign(
+      {
+        email: userData.email,
+      },
+      process.env.ACCESS_SECRET,
+      {
+        expiresIn: '5m',
+        issuer: 'user',
+      }
+    );
+    return token;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//create refresh tokens
+const postRefreshToken = (userData) => {
+  try {
+    const token = jwt.sign(
+      {
+        email: userData.email,
+      },
+      process.env.REFRESH_SECRET,
+      {
+        expiresIn: '24h',
+        issuer: 'user',
+      }
+    );
+    return token;
+  } catch (error) {
+    console.log(error);
+  }
+};
+```
+
+#### - Verify tokens
+
+```javascript
+//verify tokens
+const verifyAccessToken = (accessToken) => {
+  try {
+    const decoded = jwt.verify(accessToken, process.env.ACCESS_SECRET);
+    return decoded;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const verifyRefreshToken = (refreshToken) => {
+  try {
+    const decoded = jwt.verify(refreshToken, process.env.REFRESH_SECRET);
+    return decoded;
+  } catch (error) {
+    console.log(error);
+  }
+};
+```
+
+#### - Client Side
+
+> On the client side, need to send tokens in the header parts of http request, I've used intercept function in Axios.
+
+```javascript
+axios.interceptors.request.use(
+  function (config) {
+    const accessToken = localStorage.getItem('accessToken');
+    const refreshToken = localStorage.getItem('refreshToken');
+
+    if (!refreshToken) {
+      return config;
+    }
+
+    if (accessToken) {
+      config.headers.authorization = `Bearer ${accessToken}`;
+    }
+
+    if (refreshToken) {
+      config.headers['refresh-token'] = refreshToken;
+    }
+
+    return config;
+  },
+  function (error) {
+    return Promise.reject(error);
+  }
+);
+```

@@ -36,7 +36,9 @@ export default function OnThisPage(props: Props) {
       <p className="text-xl my-4 text-zinc-500 dark:text-zinc-400">
         On This Page
       </p>
-      <div className="text-sm border-b-[1px]">{handleHeadings()}</div>
+      <div className="prose-li:text-base border-b-[1px]">
+        {handleHeadings()}
+      </div>
       <div className="flex flex-col items-end mt-5 text-sm gap-2">
         <CopyLink />
         <BacktoTop />

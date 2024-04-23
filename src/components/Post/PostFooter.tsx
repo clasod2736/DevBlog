@@ -16,7 +16,7 @@ export default function PostFooter({ title, description, date }: PostFooter) {
   return (
     <section className=" my-16 px-6 py-8 rounded-md dark:bg-zinc-800 bg-zinc-200">
       <h3 className="my-1 text-3xl">{title}</h3>
-      <span className="flex flex-row gap-4 my-1">
+      <span className="flex flex-row items-center gap-4 my-1">
         <p
           className="text-base my-1
         "

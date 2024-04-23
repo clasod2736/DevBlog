@@ -1,0 +1,39 @@
+---
+title: Preloading
+category: none
+tag: React
+date: 2024-04-08
+featured: false
+image: none
+articleType: snippet
+description: none
+---
+
+## Preloading Images in React
+
+> When We use hight quality images or gifs, it could cause lower performance or user experience.
+> In my case, I utilised preloading custom hook in React, improved application's performance.
+
+```javascript
+//Get img sources and check that is multiple sources or just one, and set props
+//to get multiple arguments for case need to get img sources with arguments from group of data.
+
+export default function usePreload(imgSrc, ...arg) {
+  if (arg) {
+    const filteredImgSrc = imgSrc.map((item) => item.img === imgSrc);
+    if (!filteredImgSrc) {
+      return console.log("There is not matched img sources");
+    }
+  }
+
+  if (typeof imgSrc === Array || typeof filteredImgSrc === Array) {
+    imgSrc.forEach((img) => {
+      const image = new Image();
+      image.src = img.img;
+    });
+  } else if (typeof imgSrc === String || typeof filteredImgSrc === String) {
+    let img = new Image();
+    img.src = imgSrc;
+  } else  else return console.log('Source is not valid.');
+}
+```

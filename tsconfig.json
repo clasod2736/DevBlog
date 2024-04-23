@@ -34,7 +34,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".contentlayer/generated",
-    "src/components/Post/OnThisPage"
+    "src/components/Post/OnThisPage",
+    "src/html/TagA.tsx"
   ],
   "exclude": ["node_modules"]
 }
