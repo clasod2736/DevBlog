@@ -1,0 +1,89 @@
+---
+title: Javascript Works
+category: Front-End
+tag: none
+date: 2024-04-20
+featured: false
+image: none
+articleType: post
+description: 'How does Javascript work??'
+---
+
+# How does Javascript work??
+
+> In this post, wrote about how javascript actually working under the hood and nature of it.
+> Why do I need to know how does javascript work? Most of my technical skills are based on javascript(React and Node.js)
+> I'm not really familiar with vanila javascript but I consider through study JS fundamental, would have better coding approach and in-depth understanding.
+
+## Single Threded
+
+Javascript is single threded language, it has one stream of working line and it is basically working synchronously.
+JS is stack the tasks in to "Call Stack" and working one by one from the top to bottom by your JS code.
+It means working only one task at the time. At this point, <code>Promise</code> and <code>async & await</code> show up.
+Those method set some tasks aside into "Task Queue", and execute them after all of tasks is finished from "Call Stack".
+
+## Javascript Engine
+
+Every web browsers have javascript engine for translating javascript.<br/>
+ex) v8 for Chrome<br/>
+And javascript engine is formed with <code>Memory Heap</code> and <code>Call Stack.</code>
+
+<img
+  src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fmloca%2Fbtrm2pc7JOW%2FK6GpHp4SMcv5YqzUd5MeVK%2Fimg.png"
+  alt="img1"
+  width={'70%'}
+/>
+
+#### - Memory Heap
+
+Javascript doing variables decalaration , function storing and callback In Meomory Heap.
+
+#### - Call Stack
+
+In each tasks in "Call Stack", we call them <code>Stack Frame</code>.<br/>
+Then what if putting too many tasks in the call stack?<br/>
+If we execute infinity loop, we'll get maximum call stack size error.<br/>
+Because Call Stack has a limitation, if once over the limit cause error.<br/>
+We called that <code>Stack Overflow</code>
+
+<img
+  src="https://velog.velcdn.com/images/hang_kem_0531/post/e4a7a289-19c2-4fd7-ac33-2353e1f92adf/image.png"
+  alt="img1"
+  width={'70%'}
+/>
+
+## Runtime
+
+As mentioned earlier, since the JavaScript engine is based on a single-threaded model, there is a problem where other tasks have to wait until the current task is completed. Moreover, there is a concern that if tasks that take a long time to complete are performed, the program may become extremely slow.
+
+Therefore, it was efficient to handle long-running tasks in the background and only handle simple tasks in the call stack. JavaScript runtime made these processes possible.
+
+<img
+  src="https://velog.velcdn.com/images/hang_kem_0531/post/35c65541-989d-4e52-8ddf-d6dc33ecd8ec/image.png"
+  alt="img1"
+  width={'70%'}
+/>
+
+##### - Queue
+
+This area for temporarily saving event handler or callback of async function like <code>setTimeout</code>
+
+<br />
+##### - Event loop
+
+The event loop continuously checks whether there is any currently executing execution context in the call stack and whether there are any functions(callback functions, event handlers, etc.)
+waiting in the callback queue. If the call stack is empty and there are functions waiting in the task queue, the event loop moves the functions from the callback queue to the call stack sequentially (FIFO, First In First Out).
+The functions moved to the call stack are then executed.
+
+#### ✨Why we need to handle some task asynchronously?
+
+> What if we request to server to get some user data, we can't hold every rest of tasks for response that we don't know how long does it take for.
+
+### Summary
+
+> I knew using async method in javascript just for performance and efficiency.
+> But it is not, it is affected by software devlopment environment when javascript invented.
+> Also Javascript is working Single Threded, but Browser working "Multi Threded".
+> If all of javascript codes working single threded with javascript engine, then javascript
+> couldn't execute tasks asynchronously. Also running time and performance are being
+> inefficient.

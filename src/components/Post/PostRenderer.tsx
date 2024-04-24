@@ -33,7 +33,7 @@ export default function PostRenderer(post: Post) {
           <OnThisPage headings={post.headings} />
         </div>
         <div
-          className={`md:max-w-[864px] xs:max-w-4xl prose prose-stone prose-base prose-p:my-4 prose-blockquote:my-4 prose-blockquote:text-xl prose-h1:text-6xl prose-h2:text-5xl prose-li:text-xl prose-li:font-bold prose-li:my-2 prose-ul:my-2 prose-h3:text-4xl prose-h4:text-3xl prose-h5:text-2xl dark:prose-dark ${styles.mdxContainer}`}
+          className={`md:max-w-[864px] xs:max-w-4xl prose prose-stone prose-base prose-p:my-2 prose-code:p-1 prose-code:bg-zinc-300 dark:prose-code:bg-zinc-600 prose-code:rounded-sm prose-blockquote:my-4 prose-blockquote:text-xl prose-h1:text-6xl prose-h1:mb-8 prose-h2:text-5xl prose-h2:mb-4 prose-li:text-xl prose-li:font-bold prose-li:my-2 prose-ul:my-2 prose-h3:text-4xl prose-h4:text-3xl prose-h5:text-2xl dark:prose-dark ${styles.mdxContainer}`}
         >
           <MdxContent />
         </div>
