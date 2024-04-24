@@ -32,7 +32,9 @@ export default function PostRenderer(post: Post) {
         <div className="lg:flex lg:flex-row xs:hidden lg:w-1/2 min-w-32 pl-12 transition-all">
           <OnThisPage headings={post.headings} />
         </div>
-        <div className={`md:max-w-[864px] xs:max-w-4xl ${styles.mdxContainer}`}>
+        <div
+          className={`md:max-w-[864px] xs:max-w-4xl prose prose-stone prose-base prose-p:my-4 prose-blockquote:my-4 prose-blockquote:text-xl prose-h1:text-6xl prose-h2:text-5xl prose-li:text-xl prose-li:font-bold prose-li:my-2 prose-ul:my-2 prose-h3:text-4xl prose-h4:text-3xl prose-h5:text-2xl dark:prose-dark ${styles.mdxContainer}`}
+        >
           <MdxContent />
         </div>
       </section>
