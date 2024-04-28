@@ -1,0 +1,194 @@
+---
+title: How browser works
+category: Front-End
+tag: none
+date: 2024-04-23
+featured: false
+image: none
+articleType: post
+description: 'Basic process when user access to website through browser.'
+---
+
+import S from '../src/html/TagStrong';
+import A from '../src/html/TagA';
+
+# How does browser works??
+
+> I studied basic process of browser when we access website throught them, I've never thought about browser's capability, but it is truly amazing.<br/>
+> Let's look into what is happening when we access to website. 👀
+
+## 🤨 What is Browser?
+
+> A web browser is an application software that interprets (HTML + CSS) and
+> JavaScript languages synchronously, displaying content on the screen.
+
+## 🏗️ Structure
+
+<br />
+<img
+  src="https://web.dev/static/articles/howbrowserswork/image/browser-components-9cd8ff834cc9c_960.png"
+  alt="img1"
+  width={'60%'}
+/>
+
+##### 1. User Interface
+
+It is the area accessible to the user. This includes the address bar where you can enter URIs, navigation buttons such as back/forward buttons, bookmark menu, refresh button, stop button to halt the loading of the current document, home button, and all other parts except for the window displaying the requested page.
+
+<br />
+##### 2. Browser Engine
+
+It controls the operation between the user interface and the rendering engine. It references Data Storage and performs various tasks such as writing and reading data locally.
+
+<br />
+##### 3. Rendering Engine
+
+It displays the resources received from the web server on the web browser. For example, when receiving an HTML document from the server, it parses HTML and CSS to display on the screen. Understanding the rendering engine is important to understand how the browser works.<br/><br/>
+When the browser receives an HTML document from the server, it is parsed by the rendering engine's HTML parser and CSS parser, transforming them into the DOM and CSSOM trees, which are then combined into the render tree. Based on this render tree, the browser presents the web page.
+
+<br />
+##### 4. Networking
+
+It enables network calls such as HTTP requests, allowing communication with the server.
+
+<br />
+##### 5. UI Backend
+
+It is the interface responsible for drawing basic widgets like select and input.
+
+<br />
+##### 6. JavaScript Interpreter
+
+It interprets and executes JavaScript code.
+
+<br />
+##### 7. Data Storage
+
+It is the area where browser data is stored using memory storage mechanisms like Cookies, Local Storage, Indexed DB, etc.
+
+## ⏳ Rendering Engine Process
+
+<br />
+
+<img
+  src="https://web.dev/static/articles/howbrowserswork/image/rendering-engine-basic-fl-2fba02b24e871_960.png"
+  alt="img1"
+  width={'80%'}
+/>
+
+1. Start to parsing HTML file and building DOM tree.
+
+2. Then, it parses the style elements included along with external CSS files.
+
+3. Combines the DOM tree with the result from step "2" to construct the render tree.
+
+4. It determines the placement of each node in the render tree on the screen.
+
+5. The UI backend draws each node of the render tree.
+   <br />
+   <br />
+
+##### <i>Main flow of "Webkit" rendering engine.</i>
+
+<img
+  src="https://web.dev/static/articles/howbrowserswork/image/webkit-main-flow-b779d50c0cf28_960.png"
+  alt="img1"
+  width={'80%'}
+/>
+<br />
+#### 1. Start to build DOM.
+
+DOM has a 1 to 1 relationship with MarkUp.
+
+```javascript
+<html>
+  {' '}
+  <body>
+    {' '}
+    <p>Hello World</p> <div>
+      <img src="example.png" />
+    </div>{' '}
+  </body>
+</html>
+```
+
+Can transfer above codes to DOM Tree like below image.
+
+<img
+  src="https://web.dev/static/articles/howbrowserswork/image/dom-tree-the-example-mar-70be67fe14c9a_960.png"
+  alt="img1"
+  width={'60%'}
+/>
+
+Browser parse them through HTML-parser after recieve all of HTML documnets from web-server, then build DOM tree with them.
+
+#### 2. Build CSSOM
+
+<br />
+<img
+  src="https://web.dev/static/articles/howbrowserswork/image/parsing-css-4531ebee58764_960.png"
+  alt="img1"
+  width={'70%'}
+/>
+CSS files are parsed into style sheet objects, and each object inlcludes CSS
+rules. CSS rule objects (CSSOM) include selectors, declaration objects, and
+other objects that match the CSS syntax.
+<br />
+
+#### 3. Build Render tree.
+
+During the construction of the DOM tree, the browser generates the render tree based on the DOM tree. The render tree is responsible for creating the document as visual components.
+
+WebKit uses the terms "renderer" or "render object" for these components. Renderers know how to position and draw themselves and their child elements.
+
+Renderers correspond to DOM elements, but it's not a one-to-one relationship. This is because certain DOM elements, such as <S str={"<head>"}/> or elements with <S str={"display:'none'"}/>, which are not visible to users, are not added to the render tree. (Elements with the visibility property set to "hidden" are represented in the tree.)
+
+<img
+  src="https://web.dev/static/articles/howbrowserswork/image/the-render-tree-the-corr-f699894ef4c75_960.png"
+  alt="img1"
+  width={'70%'}
+/> * (Left) DOM tree (Right) Render Tree.
+<br />
+
+#### 4. Build layout
+
+Since the render tree doesn't inherently have position and size information, it determines the position (positioning) and size (sizing) for each object, indicating where each object should be located within the space.
+
+#### 5. Painting Render tree
+
+Once the render tree is constructed and the layout is formed, the UI backend operates to represent each object of the render tree in terms of pixels (px) on the screen.
+
+## ✨ Interpreting Javascript
+
+First, Javascript codes are "not" processing in Rendering Engine,<br/>
+it's interpreting in <S str={"Javascript Interpreter"}/>
+
+<br />
+When the HTML parser encounters a <S str={'<script>'} /> tag, it pauses the DOM construction
+process and hands over control to the JavaScript engine to execute the JavaScript
+code. The JavaScript engine, upon receiving control, loads and parses the JavaScript
+code contained within the <S str={'<script>'} /> tag or defined in the src attribute
+of the tag. Once the execution of JavaScript is complete, control is returned to
+the HTML parser to resume DOM construction from the point where it was paused.
+
+Also, the browser processes HTML, CSS, and JavaScript synchronously. However, if the JavaScript engine has control and manipulates the DOM before the JavaScript code is complete, errors will occur. This is why JavaScript code is typically placed at the bottom of the <S str={"<body>"}/> tag in HTML files.
+
+<br />
+##### <i>* The Whole process</i>
+
+<img
+  src="https://img1.daumcdn.net/thumb/R1920x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FAx7cR%2Fbtrb1qH7RCh%2F5P6KFuOtPDeS41cLbalPLk%2Fimg.png"
+  alt="img1"
+  width={'100%'}
+/>
+
+---
+
+<br />
+> It was hard to understand, it is not really programming, just all about the logics
+>and couldn't make sense for me in every step, why would working like this and that?? <br />
+> I couldn't even understand detail of process 😥 Many jargons and terminologies
+>haha. I just understood what is the process and roughly why browser do this and
+that.
+<br /> But I believe This will help me to have a better insight in fron-end web development
+and software engineering. Wrap up today!

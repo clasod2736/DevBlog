@@ -1,6 +1,6 @@
 ---
-title: Javascript Works
-category: Front-End
+title: How Javascript works
+category: Javascript
 tag: none
 date: 2024-04-20
 featured: false
@@ -8,6 +8,8 @@ image: none
 articleType: post
 description: 'How does Javascript work??'
 ---
+
+import S from '../src/html/TagStrong';
 
 # How does Javascript work??
 
@@ -19,14 +21,14 @@ description: 'How does Javascript work??'
 
 Javascript is single threded language, it has one stream of working line and it is basically working synchronously.
 JS is stack the tasks in to "Call Stack" and working one by one from the top to bottom by your JS code.
-It means working only one task at the time. At this point, <code>Promise</code> and <code>async & await</code> show up.
+It means working only one task at the time. At this point, <S str={"Promise"} /> and <S str={"async & await"} /> show up.
 Those method set some tasks aside into "Task Queue", and execute them after all of tasks is finished from "Call Stack".
 
 ## Javascript Engine
 
 Every web browsers have javascript engine for translating javascript.<br/>
 ex) v8 for Chrome<br/>
-And javascript engine is formed with <code>Memory Heap</code> and <code>Call Stack.</code>
+And javascript engine is formed with <S str={"Memory Heap & Call Stack"} />
 
 <img
   src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fmloca%2Fbtrm2pc7JOW%2FK6GpHp4SMcv5YqzUd5MeVK%2Fimg.png"
@@ -40,11 +42,11 @@ Javascript doing variables decalaration , function storing and callback In Meomo
 
 #### - Call Stack
 
-In each tasks in "Call Stack", we call them <code>Stack Frame</code>.<br/>
+In each tasks in "Call Stack", we call them <S str={"Stack Frame"} />.<br/>
 Then what if putting too many tasks in the call stack?<br/>
 If we execute infinity loop, we'll get maximum call stack size error.<br/>
 Because Call Stack has a limitation, if once over the limit cause error.<br/>
-We called that <code>Stack Overflow</code>
+We called that <S str={"Stack Overflow"} />
 
 <img
   src="https://velog.velcdn.com/images/hang_kem_0531/post/e4a7a289-19c2-4fd7-ac33-2353e1f92adf/image.png"
@@ -66,7 +68,7 @@ Therefore, it was efficient to handle long-running tasks in the background and o
 
 ##### - Queue
 
-This area for temporarily saving event handler or callback of async function like <code>setTimeout</code>
+This area for temporarily saving event handler or callback of async function like <S str={"setTimeOut"} />
 
 <br />
 ##### - Event loop
