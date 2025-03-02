@@ -1,3 +1,5 @@
+#### ***NOTICE: **https://joondev.blog** domain is currently disabled! sorry about inconvinience, please explore github repo instead.
+
 # Joondev-blog
 
 Hi!, Thanks for coming and view my second Project Readme file! This project is my own tech blog.<br>
